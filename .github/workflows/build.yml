@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 env:
   IMAGE: ghcr.io/navikt/dp-kontrakter:${{ github.sha }}
