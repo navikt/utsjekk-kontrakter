@@ -1,0 +1,56 @@
+name: Build
+on:
+  push:
+    branches:
+      - main
+
+env:
+  IMAGE: ghcr.io/navikt/dp-kontrakter:${{ github.sha }}
+jobs:
+  build:
+    name: Bygg bibliotek
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: 'temurin'
+      - name: Resolve/Update Dependencies
+        env:
+          GITHUB_USERNAME: x-access-token
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: mvn package dependency:resolve-plugins dependency:go-offline
+
+      - name: Cache Maven dependencies
+        uses: actions/cache@preview
+        id: cache
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Build (and run tests)
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: mvn clean install
+
+      - name: Setting version
+        run: |
+          export GIT_COMMIT_HASH=$(git log -n 1 --pretty=format:'%h')
+          export GIT_COMMIT_DATE=$(git log -1 --pretty='%ad' --date=format:'%Y%m%d%H%M%S')
+          export VERSION=1.0_${GIT_COMMIT_DATE}_${GIT_COMMIT_HASH}
+          echo "Setting version $VERSION"
+          mvn versions:set -DnewVersion="$VERSION"
+          mvn versions:commit
+
+      - name: Deploy to Github Package
+        env:
+          GITHUB_USERNAME: x-access-token
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: mvn --settings .github/maven-settings.xml source:jar-no-fork deploy -DskipTests=true -Dmaven.wagon.http.pool=false
