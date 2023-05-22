@@ -1,5 +1,5 @@
 package no.nav.dagpenger.kontrakter.utbetaling
 
-enum class Fagsystem(kode: String) {
+enum class Fagsystem(val kode: String) {
     Dagpenger("DP")
 }
