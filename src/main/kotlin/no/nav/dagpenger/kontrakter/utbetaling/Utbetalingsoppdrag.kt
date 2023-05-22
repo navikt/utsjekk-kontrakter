@@ -4,11 +4,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import java.math.BigDecimal
 import java.time.LocalDate
 import java.time.LocalDateTime
+import java.util.UUID
 
 data class Utbetalingsoppdrag(
     val kodeEndring: KodeEndring,
-    val fagSystem: String,
-    val saksnummer: String,
+    val fagSystem: Fagsystem = Fagsystem.Dagpenger,
+    val saksnummer: UUID,
     val aktoer: String,
     val saksbehandlerId: String,
     val avstemmingTidspunkt: LocalDateTime = LocalDateTime.now(),
@@ -21,6 +22,8 @@ data class Utbetalingsoppdrag(
         ENDR,
         UEND
     }
+
+
 }
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -36,7 +39,7 @@ data class Utbetalingsperiode(
     val sats: BigDecimal,
     val satsType: SatsType,
     val utbetalesTil: String,
-    val behandlingId: String,
+    val behandlingId: UUID,
     val utbetalingsgrad: Int? = null
 ) {
 
