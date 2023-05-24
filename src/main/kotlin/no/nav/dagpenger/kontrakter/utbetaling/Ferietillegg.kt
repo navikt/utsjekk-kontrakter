@@ -1,6 +1,6 @@
 package no.nav.dagpenger.kontrakter.utbetaling
 
-enum class Ferietilllegg {
+enum class Ferietillegg {
     VANLIG,
     AVDØD
 }
