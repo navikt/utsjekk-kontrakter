@@ -11,7 +11,7 @@
     <artifactId>iverksett</artifactId>
     <packaging>jar</packaging>
 
-    <name>Iverksett - kontrakter</name>
+    <name>iverksett</name>
 
     <properties>
         <revision>1.0</revision>
