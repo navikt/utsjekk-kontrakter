@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>no.nav.dagpenger</groupId>
+        <groupId>no.nav.dagpenger.kontrakter</groupId>
         <artifactId>dp-kontrakter</artifactId>
         <version>${revision}${sha1}${changelist}</version>
     </parent>
@@ -28,9 +28,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>no.nav.dagpenger</groupId>
+            <groupId>no.nav.dagpenger.kontrakter</groupId>
             <artifactId>felles</artifactId>
-            <version>${revision}${sha1}${changelist}</version>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <!-- Kotlin -->
