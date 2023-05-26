@@ -8,9 +8,7 @@
         <version>${revision}${sha1}${changelist}</version>
     </parent>
 
-    <groupId>no.nav.dagpenger</groupId>
     <artifactId>iverksett</artifactId>
-    <version>${revision}${sha1}${changelist}</version>
     <packaging>jar</packaging>
 
     <name>Iverksett - kontrakter</name>
@@ -30,7 +28,7 @@
         <dependency>
             <groupId>no.nav.dagpenger.kontrakter</groupId>
             <artifactId>felles</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${revision}${sha1}${changelist}</version>
         </dependency>
 
         <!-- Kotlin -->
