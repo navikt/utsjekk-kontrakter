@@ -1,6 +1,6 @@
 package no.nav.dagpenger.kontrakter.iverksett.simulering
 
-import no.nav.dagpenger.iverksett.kontrakter.tilbakekreving.Ytelsestype
+import no.nav.dagpenger.kontrakter.iverksett.tilbakekreving.Ytelsestype
 import java.math.BigDecimal
 import java.time.LocalDate
 

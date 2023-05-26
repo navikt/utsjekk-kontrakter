@@ -1,6 +1,6 @@
 package no.nav.dagpenger.kontrakter.iverksett.journalføring
 
-import no.nav.dagpenger.iverksett.kontrakter.felles.Tema
+import no.nav.dagpenger.kontrakter.iverksett.felles.Tema
 
 data class JournalposterForBrukerRequest(
     val brukerId: Bruker,

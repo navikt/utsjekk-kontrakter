@@ -1,6 +1,6 @@
 package no.nav.dagpenger.kontrakter.iverksett.tilbakekreving
 
-import no.nav.dagpenger.iverksett.kontrakter.felles.Språkkode
+import no.nav.dagpenger.kontrakter.iverksett.felles.Språkkode
 
 enum class Ytelsestype(val kode: String, val navn: Map<Språkkode, String>) {
     DAGPENGER_ARBEIDSSOKER_ORDINAER(

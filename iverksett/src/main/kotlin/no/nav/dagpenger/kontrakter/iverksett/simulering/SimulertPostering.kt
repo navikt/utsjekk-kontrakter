@@ -1,8 +1,8 @@
 package no.nav.dagpenger.kontrakter.iverksett.simulering
 
-import no.nav.dagpenger.iverksett.kontrakter.simulering.BetalingType
-import no.nav.dagpenger.iverksett.kontrakter.simulering.FagOmrådeKode
-import no.nav.dagpenger.iverksett.kontrakter.simulering.PosteringType
+import no.nav.dagpenger.kontrakter.iverksett.simulering.BetalingType
+import no.nav.dagpenger.kontrakter.iverksett.simulering.FagOmrådeKode
+import no.nav.dagpenger.kontrakter.iverksett.simulering.PosteringType
 import java.math.BigDecimal
 import java.time.LocalDate
 

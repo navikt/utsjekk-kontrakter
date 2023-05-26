@@ -1,6 +1,6 @@
 package no.nav.dagpenger.kontrakter.iverksett.journalføring.dokarkiv
 
-import no.nav.dagpenger.iverksett.kontrakter.felles.Språkkode
+import no.nav.dagpenger.kontrakter.iverksett.felles.Språkkode
 
 data class Førsteside(
     val språkkode: Språkkode = Språkkode.NB,

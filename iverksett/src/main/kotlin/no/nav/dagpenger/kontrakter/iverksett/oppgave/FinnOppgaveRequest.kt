@@ -1,7 +1,7 @@
 package no.nav.dagpenger.kontrakter.iverksett.oppgave
 
-import no.nav.dagpenger.iverksett.kontrakter.felles.Behandlingstema
-import no.nav.dagpenger.iverksett.kontrakter.felles.Tema
+import no.nav.dagpenger.kontrakter.iverksett.felles.Behandlingstema
+import no.nav.dagpenger.kontrakter.iverksett.felles.Tema
 import java.time.LocalDate
 import java.time.LocalDateTime
 

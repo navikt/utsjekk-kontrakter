@@ -2,7 +2,7 @@ package no.nav.dagpenger.kontrakter.iverksett.oppgave
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
-import no.nav.dagpenger.iverksett.kontrakter.felles.Tema
+import no.nav.dagpenger.kontrakter.iverksett.felles.Tema
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)

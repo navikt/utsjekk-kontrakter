@@ -2,7 +2,7 @@ package no.nav.dagpenger.kontrakter.iverksett.felles
 
 import com.fasterxml.jackson.module.kotlin.readValue
 import io.kotest.matchers.shouldBe
-import no.nav.dagpenger.iverksett.kontrakter.objectMapper
+import no.nav.dagpenger.kontrakter.iverksett.objectMapper
 import org.junit.jupiter.api.Test
 import java.time.LocalDate
 import java.time.YearMonth

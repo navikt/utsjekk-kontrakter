@@ -1,6 +1,6 @@
 package no.nav.dagpenger.kontrakter.iverksett.felles
 
-import no.nav.dagpenger.iverksett.kontrakter.iverksett.Brevmottaker
+import no.nav.dagpenger.kontrakter.iverksett.iverksett.Brevmottaker
 import no.nav.dagpenger.kontrakter.utbetaling.StønadType
 
 data class FrittståendeBrevDto(

@@ -1,7 +1,7 @@
 package no.nav.dagpenger.kontrakter.iverksett.tilbakekreving
 
-import no.nav.dagpenger.iverksett.kontrakter.felles.Regelverk
-import no.nav.dagpenger.iverksett.kontrakter.felles.Språkkode
+import no.nav.dagpenger.kontrakter.iverksett.felles.Regelverk
+import no.nav.dagpenger.kontrakter.iverksett.felles.Språkkode
 import no.nav.dagpenger.kontrakter.utbetaling.Fagsystem
 import java.time.LocalDate
 
