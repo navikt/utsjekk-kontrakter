@@ -1,4 +1,4 @@
-package no.nav.dagpenger.kontrakter.iverksett.oppdrag
+package no.nav.dagpenger.kontrakter.oppdrag
 
 import no.nav.dagpenger.kontrakter.utbetaling.Utbetalingsoppdrag
 

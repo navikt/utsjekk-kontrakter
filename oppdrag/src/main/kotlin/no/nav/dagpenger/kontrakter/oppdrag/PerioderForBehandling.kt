@@ -1,4 +1,4 @@
-package no.nav.dagpenger.kontrakter.iverksett.oppdrag
+package no.nav.dagpenger.kontrakter.oppdrag
 
 /**
  * Perioder er idn for perioder, eks 1,2,3

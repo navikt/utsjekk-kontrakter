@@ -14,4 +14,12 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>no.nav.dagpenger.kontrakter</groupId>
+            <artifactId>felles</artifactId>
+            <version>${revision}${sha1}${changelist}</version>
+        </dependency>
+    </dependencies>
 </project>

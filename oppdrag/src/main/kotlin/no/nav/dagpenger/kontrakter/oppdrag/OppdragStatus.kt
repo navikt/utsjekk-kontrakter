@@ -1,4 +1,4 @@
-package no.nav.dagpenger.kontrakter.iverksett.oppdrag
+package no.nav.dagpenger.kontrakter.oppdrag
 
 enum class OppdragStatus {
     LAGT_PAA_KOE,

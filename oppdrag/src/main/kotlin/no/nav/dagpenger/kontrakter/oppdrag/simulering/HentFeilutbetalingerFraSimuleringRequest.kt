@@ -1,11 +1,11 @@
-package no.nav.dagpenger.kontrakter.iverksett.simulering
+package no.nav.dagpenger.kontrakter.oppdrag.simulering
 
-import no.nav.dagpenger.kontrakter.iverksett.tilbakekreving.Ytelsestype
+import no.nav.dagpenger.kontrakter.utbetaling.StønadType
 import java.math.BigDecimal
 import java.time.LocalDate
 
 data class HentFeilutbetalingerFraSimuleringRequest(
-    val ytelsestype: Ytelsestype,
+    val ytelsestype: StønadType,
     val eksternFagsakId: String,
     val fagsystemsbehandlingId: String
 )
