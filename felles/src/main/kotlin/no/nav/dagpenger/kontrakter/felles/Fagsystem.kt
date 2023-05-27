@@ -1,4 +1,4 @@
-package no.nav.dagpenger.kontrakter.utbetaling
+package no.nav.dagpenger.kontrakter.felles
 
 import java.lang.IllegalArgumentException
 

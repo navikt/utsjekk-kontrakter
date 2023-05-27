@@ -2,7 +2,7 @@ package no.nav.dagpenger.kontrakter.iverksett.tilbakekreving
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import no.nav.dagpenger.kontrakter.felles.Språkkode
-import no.nav.dagpenger.kontrakter.utbetaling.Fagsystem
+import no.nav.dagpenger.kontrakter.felles.Fagsystem
 import java.time.LocalDate
 
 @JsonIgnoreProperties(ignoreUnknown = true)

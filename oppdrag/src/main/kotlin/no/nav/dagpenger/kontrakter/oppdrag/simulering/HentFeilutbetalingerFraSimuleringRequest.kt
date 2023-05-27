@@ -1,6 +1,6 @@
 package no.nav.dagpenger.kontrakter.oppdrag.simulering
 
-import no.nav.dagpenger.kontrakter.utbetaling.StønadType
+import no.nav.dagpenger.kontrakter.felles.StønadType
 import java.math.BigDecimal
 import java.time.LocalDate
 

@@ -1,7 +1,5 @@
 package no.nav.dagpenger.kontrakter.felles
 
-import no.nav.dagpenger.kontrakter.utbetaling.StønadType
-
 data class FrittståendeBrevDto(
     val personIdent: String,
     val eksternFagsakId: Long,
@@ -10,7 +8,7 @@ data class FrittståendeBrevDto(
     val fil: ByteArray,
     val journalførendeEnhet: String,
     val saksbehandlerIdent: String,
-    val mottakere: List<Brevmottaker>? = null,
+    val mottakere: List<BrevmottakerDto>? = null,
 )
 
 enum class FrittståendeBrevType(val tittel: String) {

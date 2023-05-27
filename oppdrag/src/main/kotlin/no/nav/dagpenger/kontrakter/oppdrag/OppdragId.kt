@@ -1,5 +1,6 @@
-package no.nav.dagpenger.kontrakter.utbetaling
+package no.nav.dagpenger.kontrakter.oppdrag
 
+import no.nav.dagpenger.kontrakter.felles.Fagsystem
 import java.util.UUID
 
 data class OppdragId(

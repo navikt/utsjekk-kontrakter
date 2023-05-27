@@ -14,9 +14,6 @@
     <name>iverksett</name>
 
     <properties>
-        <revision>1.0</revision>
-        <sha1/>
-        <changelist>-SNAPSHOT</changelist>
         <java.version>17</java.version>
         <kotlin.version>1.8.10</kotlin.version>
         <kotest.version>5.5.4</kotest.version>

@@ -1,6 +1,6 @@
 package no.nav.dagpenger.kontrakter.iverksett.journalføring.dokdist
 
-import no.nav.dagpenger.kontrakter.utbetaling.Fagsystem
+import no.nav.dagpenger.kontrakter.felles.Fagsystem
 
 
 data class DistribuerJournalpostRequest(

@@ -1,6 +1,6 @@
-package no.nav.dagpenger.kontrakter.felles
+package no.nav.dagpenger.kontrakter.iverksett
 
-import no.nav.dagpenger.kontrakter.utbetaling.StønadType
+import no.nav.dagpenger.kontrakter.felles.StønadType
 
 enum class Opplysningskilde {
     INNSENDT_SØKNAD,

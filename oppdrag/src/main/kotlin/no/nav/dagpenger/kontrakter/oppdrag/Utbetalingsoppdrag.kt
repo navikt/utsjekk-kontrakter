@@ -1,6 +1,7 @@
-package no.nav.dagpenger.kontrakter.utbetaling
+package no.nav.dagpenger.kontrakter.oppdrag
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import no.nav.dagpenger.kontrakter.felles.Fagsystem
 import java.math.BigDecimal
 import java.time.LocalDate
 import java.time.LocalDateTime

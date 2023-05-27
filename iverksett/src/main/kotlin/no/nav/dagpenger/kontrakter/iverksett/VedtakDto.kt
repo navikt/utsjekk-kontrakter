@@ -1,4 +1,4 @@
-package no.nav.dagpenger.kontrakter.felles
+package no.nav.dagpenger.kontrakter.iverksett
 
 
 enum class VedtakType  {

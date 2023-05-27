@@ -1,6 +1,6 @@
 package no.nav.dagpenger.kontrakter.iverksett.infotrygd
 
-import no.nav.dagpenger.kontrakter.utbetaling.StønadType
+import no.nav.dagpenger.kontrakter.felles.StønadType
 
 data class InfotrygdFinnesResponse(
     val vedtak: List<Vedtakstreff>,

@@ -1,6 +1,6 @@
 package no.nav.dagpenger.kontrakter.iverksett.infotrygd
 
-import no.nav.dagpenger.kontrakter.utbetaling.StønadType
+import no.nav.dagpenger.kontrakter.felles.StønadType
 
 /**
  * @param personIdenter alle identer til personen
