@@ -4,10 +4,12 @@ import no.nav.dagpenger.kontrakter.felles.StønadType
 import java.time.LocalDate
 
 data class UtbetalingDto(
-    val beløp: Int,
+    val belopPerDag: Int? = null,
+    @Deprecated("Bruk belopPerDag") val beløp: Int? = null,
     val fraOgMedDato: LocalDate,
     val tilOgMedDato: LocalDate,
-    val stønadstype: StønadType = StønadType.DAGPENGER_ARBEIDSSOKER_ORDINAER,
+    val stonadstype: StønadType = StønadType.DAGPENGER_ARBEIDSSOKER_ORDINAER,
+    @Deprecated("Bruk stonadstype")val stønadstype: StønadType? = null,
     val ferietillegg: Ferietillegg? = null
 )
 
