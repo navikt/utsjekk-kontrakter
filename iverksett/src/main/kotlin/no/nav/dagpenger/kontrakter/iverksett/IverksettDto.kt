@@ -8,12 +8,14 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.UUID
 
+
 data class IverksettDto(
     val sakId: UUID,
     val behandlingId: UUID,
     val personIdent: String,
     val vedtak: VedtaksdetaljerDto,
-    val utbetalingerPaaForrigeVedtak: List<UtbetalingDto> = emptyList()
+    @Deprecated("Bruk forrigeIverksetting") val utbetalingerPaaForrigeVedtak: List<UtbetalingDto> = emptyList(),
+    val forrigeIverksetting: ForrigeIverksettingDto? = null
 )
 
 data class VedtaksdetaljerDto(
@@ -62,3 +64,11 @@ enum class VedtaksperiodeType {
     UTVIDELSE,
     SANKSJON
 }
+
+data class ForrigeIverksettingDto (
+    val behandlingId: UUID,
+    val utbetalinger: List<UtbetalingDto> = emptyList()
+)
+
+
+
