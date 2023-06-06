@@ -8,10 +8,10 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.UUID
 
-data class IverksettDagpengerdDto(
-    val sakId: UUID? = null,
-    val behandlingId: UUID? = null,
-    val personIdent: String? = null,
+data class IverksettDto(
+    val sakId: UUID,
+    val behandlingId: UUID,
+    val personIdent: String,
     val vedtak: VedtaksdetaljerDto,
     val utbetalingerPaaForrigeVedtak: List<UtbetalingDto> = emptyList()
 )
