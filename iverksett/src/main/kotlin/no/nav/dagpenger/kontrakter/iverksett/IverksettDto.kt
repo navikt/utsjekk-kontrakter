@@ -31,6 +31,14 @@ data class VedtaksdetaljerDto(
     val tilbakekreving: TilbakekrevingDto? = null,
     val brevmottakere: List<BrevmottakerDto> = emptyList(),
 )
+
+data class VedtaksstatusDto(
+    val vedtakstype: VedtakType = VedtakType.RAMMEVEDTAK,
+    val vedtakstidspunkt: LocalDateTime,
+    val resultat: Vedtaksresultat,
+    val vedtaksperioder: List<VedtaksperiodeDto> = emptyList(),
+)
+
 data class VedtaksperiodeDto(
     val fraOgMedDato: LocalDate,
     val tilOgMedDato: LocalDate? = null,
