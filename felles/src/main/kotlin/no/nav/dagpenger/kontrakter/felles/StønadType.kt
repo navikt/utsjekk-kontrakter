@@ -5,6 +5,7 @@ enum class StønadType {
     DAGPENGER_PERMITTERING_ORDINAER,
     DAGPENGER_PERMITTERING_FISKEINDUSTRI,
     DAGPENGER_EOS,
+    TILTAKSPENGER
 }
 
 
@@ -14,4 +15,5 @@ fun StønadType.tilFagsystem() = when (this) {
     StønadType.DAGPENGER_PERMITTERING_FISKEINDUSTRI,
     StønadType.DAGPENGER_EOS
     -> Fagsystem.Dagpenger
+    StønadType.TILTAKSPENGER -> Fagsystem.Tiltakspenger
 }
