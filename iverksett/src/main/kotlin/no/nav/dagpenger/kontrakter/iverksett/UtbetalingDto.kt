@@ -4,8 +4,7 @@ import no.nav.dagpenger.kontrakter.felles.StønadType
 import java.time.LocalDate
 
 data class UtbetalingDto(
-    val belopPerDag: Int? = null,
-    @Deprecated("Bruk belopPerDag") val beløp: Int? = null,
+    val belopPerDag: Int,
     val fraOgMedDato: LocalDate,
     val tilOgMedDato: LocalDate,
     val stonadstype: StønadType = StønadType.DAGPENGER_ARBEIDSSOKER_ORDINAER,
