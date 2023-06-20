@@ -8,7 +8,6 @@ data class UtbetalingDto(
     val fraOgMedDato: LocalDate,
     val tilOgMedDato: LocalDate,
     val stonadstype: StønadType = StønadType.DAGPENGER_ARBEIDSSOKER_ORDINAER,
-    @Deprecated("Bruk stonadstype")val stønadstype: StønadType? = null,
     val ferietillegg: Ferietillegg? = null
 )
 
