@@ -4,5 +4,5 @@ import java.time.LocalDate
 
 data class TilkjentYtelseDto(
     val utbetalinger: List<UtbetalingDto>,
-    val startdato: LocalDate,
+    @Deprecated("Ikke i bruk") val startdato: LocalDate = LocalDate.now()
 )
