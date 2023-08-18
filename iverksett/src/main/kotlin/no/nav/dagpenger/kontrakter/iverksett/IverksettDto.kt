@@ -13,13 +13,19 @@ data class IverksettDto(
     val sakId: UUID,
     val behandlingId: UUID,
     val personIdent: String,
-    val vedtak: VedtaksdetaljerDto,
+    val vedtak: VedtaksdetaljerDto = VedtaksdetaljerDto(
+        vedtakstype = VedtakType.RAMMEVEDTAK,
+        vedtakstidspunkt = LocalDateTime.now(),
+        resultat = Vedtaksresultat.INNVILGET,
+        saksbehandlerId = "",
+        beslutterId = ""
+    ),
     @Deprecated("Bruk forrigeIverksetting") val utbetalingerPaaForrigeVedtak: List<UtbetalingDto> = emptyList(),
     val forrigeIverksetting: ForrigeIverksettingDto? = null
 )
 
 data class VedtaksdetaljerDto(
-    val vedtakstype: VedtakType = VedtakType.RAMMEVEDTAK,
+    val vedtakstype: VedtakType,
     val vedtakstidspunkt: LocalDateTime,
     val resultat: Vedtaksresultat,
     val saksbehandlerId: String,
