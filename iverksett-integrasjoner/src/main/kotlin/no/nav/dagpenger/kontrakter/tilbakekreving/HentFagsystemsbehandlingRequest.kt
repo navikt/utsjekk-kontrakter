@@ -6,7 +6,9 @@ import java.time.LocalDate
 import java.util.UUID
 
 data class HentFagsystemsbehandlingRequest(
-    val fagsakId: UUID,
+    // Én av sakId og saksreferanse må være satt
+    val sakId: UUID? = null,
+    val saksreferanse: String? = null,
     val ytelsestype: Ytelsestype,
     val behandlingId: UUID,
 )
@@ -17,7 +19,9 @@ data class HentFagsystemsbehandlingRespons(
 )
 
 data class HentFagsystemsbehandling(
-    val fagsakId: UUID,
+    // Én av sakId og saksreferanse må være satt
+    val sakId: UUID? = null,
+    val saksreferanse: String? = null,
     val ytelsestype: Ytelsestype,
     val regelverk: Regelverk? = null,
     val behandlingId: UUID,
