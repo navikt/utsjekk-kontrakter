@@ -10,16 +10,25 @@ import java.util.UUID
 
 
 data class IverksettDto(
-    val sakId: UUID,
+    // Én av sakId og saksreferanse må være satt
+    val sakId: UUID? = null,
+    val saksreferanse: String? = null,
     val behandlingId: UUID,
+
     val personIdent: String,
-    val vedtak: VedtaksdetaljerDto,
+    val vedtak: VedtaksdetaljerDto = VedtaksdetaljerDto(
+        vedtakstype = VedtakType.RAMMEVEDTAK,
+        vedtakstidspunkt = LocalDateTime.now(),
+        resultat = Vedtaksresultat.INNVILGET,
+        saksbehandlerId = "",
+        beslutterId = ""
+    ),
     @Deprecated("Bruk forrigeIverksetting") val utbetalingerPaaForrigeVedtak: List<UtbetalingDto> = emptyList(),
     val forrigeIverksetting: ForrigeIverksettingDto? = null
 )
 
 data class VedtaksdetaljerDto(
-    val vedtakstype: VedtakType = VedtakType.RAMMEVEDTAK,
+    val vedtakstype: VedtakType,
     val vedtakstidspunkt: LocalDateTime,
     val resultat: Vedtaksresultat,
     val saksbehandlerId: String,

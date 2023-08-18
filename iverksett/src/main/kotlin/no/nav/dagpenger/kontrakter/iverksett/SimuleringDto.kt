@@ -9,7 +9,9 @@ data class SimuleringDto(
     val saksbehandlerId: String,
     val eksternBehandlingId: Long,
     val stønadstype: StønadType,
-    val sakId: UUID,
+    // Én av sakId og saksreferanse må være satt
+    val sakId: UUID? = null,
+    val saksreferanse: String? = null,
     val personIdent: String,
     val behandlingId: UUID,
     val vedtaksdato: LocalDate,
