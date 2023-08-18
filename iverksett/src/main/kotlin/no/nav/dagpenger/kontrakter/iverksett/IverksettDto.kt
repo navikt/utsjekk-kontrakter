@@ -13,7 +13,7 @@ data class IverksettDto(
     // Én av sakId og saksreferanse må være satt
     val sakId: UUID? = null,
     val saksreferanse: String? = null,
-    val behandlingId: UUID? = null,
+    val behandlingId: UUID,
 
     val personIdent: String,
     val vedtak: VedtaksdetaljerDto = VedtaksdetaljerDto(
