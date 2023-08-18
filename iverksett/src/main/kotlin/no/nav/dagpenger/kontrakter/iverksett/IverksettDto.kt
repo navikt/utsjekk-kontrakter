@@ -10,8 +10,11 @@ import java.util.UUID
 
 
 data class IverksettDto(
-    val sakId: UUID,
-    val behandlingId: UUID,
+    // Én av sakId og saksreferanse må være satt
+    val sakId: UUID? = null,
+    val saksreferanse: String? = null,
+    val behandlingId: UUID? = null,
+
     val personIdent: String,
     val vedtak: VedtaksdetaljerDto = VedtaksdetaljerDto(
         vedtakstype = VedtakType.RAMMEVEDTAK,
