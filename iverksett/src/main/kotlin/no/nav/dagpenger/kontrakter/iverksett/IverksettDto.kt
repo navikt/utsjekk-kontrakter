@@ -2,6 +2,7 @@ package no.nav.dagpenger.kontrakter.iverksett
 
 import no.nav.dagpenger.kontrakter.felles.BrevmottakerDto
 import no.nav.dagpenger.kontrakter.felles.Datoperiode
+import no.nav.dagpenger.kontrakter.felles.SakIdentifikator
 import no.nav.dagpenger.kontrakter.felles.Tilbakekrevingsvalg
 import java.math.BigDecimal
 import java.time.LocalDate
@@ -10,7 +11,6 @@ import java.util.UUID
 
 
 data class IverksettDto(
-    // Én av sakId og saksreferanse må være satt
     val sakId: UUID? = null,
     val saksreferanse: String? = null,
     val behandlingId: UUID,
@@ -25,7 +25,11 @@ data class IverksettDto(
     ),
     @Deprecated("Bruk forrigeIverksetting") val utbetalingerPaaForrigeVedtak: List<UtbetalingDto> = emptyList(),
     val forrigeIverksetting: ForrigeIverksettingDto? = null
-)
+) {
+    init {
+        SakIdentifikator.valider(sakId, saksreferanse)
+    }
+}
 
 data class VedtaksdetaljerDto(
     val vedtakstype: VedtakType,

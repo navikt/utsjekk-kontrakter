@@ -2,6 +2,7 @@ package no.nav.dagpenger.kontrakter.oppdrag
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import no.nav.dagpenger.kontrakter.felles.Fagsystem
+import no.nav.dagpenger.kontrakter.felles.SakIdentifikator
 import java.math.BigDecimal
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -10,13 +11,18 @@ import java.util.UUID
 data class Utbetalingsoppdrag(
     val kodeEndring: KodeEndring,
     val fagSystem: Fagsystem = Fagsystem.Dagpenger,
-    val saksnummer: UUID,
+    val saksnummer: UUID? = null,
+    val saksreferanse: String? = null,
     val aktoer: String,
     val saksbehandlerId: String,
     val avstemmingTidspunkt: LocalDateTime = LocalDateTime.now(),
     val utbetalingsperiode: List<Utbetalingsperiode>,
     val gOmregning: Boolean = false
 ) {
+
+    init {
+        SakIdentifikator.valider(saksnummer, saksreferanse)
+    }
 
     enum class KodeEndring {
         NY,
