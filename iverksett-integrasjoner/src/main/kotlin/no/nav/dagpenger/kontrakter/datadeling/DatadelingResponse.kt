@@ -10,7 +10,7 @@ data class DatadelingResponse(
 
 data class Periode(
     val fraOgMedDato: LocalDate,
-    val tilOgMedDato: LocalDate?,
+    val tilOgMedDato: LocalDate? = null,
     val ytelseType: StønadType,
     val gjenståendeDager: Int
 )
