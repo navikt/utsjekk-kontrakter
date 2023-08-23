@@ -1,5 +1,7 @@
 package no.nav.dagpenger.kontrakter.iverksett
 
+import io.swagger.v3.oas.annotations.media.Schema
+import jakarta.validation.constraints.Size
 import no.nav.dagpenger.kontrakter.felles.BrevmottakerDto
 import no.nav.dagpenger.kontrakter.felles.Datoperiode
 import no.nav.dagpenger.kontrakter.felles.SakIdentifikator
@@ -11,11 +13,17 @@ import java.util.UUID
 
 
 data class IverksettDto(
+    @Schema(name = "id'en til saken", required = false, description = "Må være satt hvis saksreferanse ikke er satt")
     val sakId: UUID? = null,
+    @Size(max = 20)
+    @Schema(name = "saksreferanse", required = false, description = "Må være satt hvis sakId ikke er satt")
     val saksreferanse: String? = null,
-    val behandlingId: UUID,
 
+    @Schema(name = "id'en til behandlingen som førte til vedtak", required = true)
+    val behandlingId: UUID,
+    @Schema(name = "fødselsnummer eller D-nummer", required = true, defaultValue = "12345678910")
     val personIdent: String,
+    @Schema(required = false, description = "Må være satt for utbetalingsvedtak")
     val vedtak: VedtaksdetaljerDto = VedtaksdetaljerDto(
         vedtakstype = VedtakType.RAMMEVEDTAK,
         vedtakstidspunkt = LocalDateTime.now(),
@@ -23,7 +31,10 @@ data class IverksettDto(
         saksbehandlerId = "",
         beslutterId = ""
     ),
-    @Deprecated("Bruk forrigeIverksetting") val utbetalingerPaaForrigeVedtak: List<UtbetalingDto> = emptyList(),
+    @Deprecated("Bruk forrigeIverksetting")
+    @Schema(hidden = true)
+    val utbetalingerPaaForrigeVedtak: List<UtbetalingDto> = emptyList(),
+    @Schema(required = false, description = "Må vøre satt hvis det ikke er første iverksetting")
     val forrigeIverksetting: ForrigeIverksettingDto? = null
 ) {
     init {
@@ -32,16 +43,27 @@ data class IverksettDto(
 }
 
 data class VedtaksdetaljerDto(
+    @Schema(required = true, defaultValue = "RAMMEVEDTAK")
     val vedtakstype: VedtakType,
+    @Schema(required = true,)
     val vedtakstidspunkt: LocalDateTime,
+    @Schema(required = true,)
     val resultat: Vedtaksresultat,
+    @Schema(required = true,)
     val saksbehandlerId: String,
+    @Schema(required = true,)
     val beslutterId: String,
+    @Schema(hidden = true)
     val opphorAarsak: OpphørÅrsak? = null,
+    @Schema(hidden = true)
     val avslagAarsak: AvslagÅrsak? = null,
+    @Schema(required = false)
     val utbetalinger: List<UtbetalingDto> = emptyList(),
+    @Schema(hidden = true)
     val vedtaksperioder: List<VedtaksperiodeDto> = emptyList(),
+    @Schema(hidden = true)
     val tilbakekreving: TilbakekrevingDto? = null,
+    @Schema(hidden = true)
     val brevmottakere: List<BrevmottakerDto> = emptyList(),
 )
 
