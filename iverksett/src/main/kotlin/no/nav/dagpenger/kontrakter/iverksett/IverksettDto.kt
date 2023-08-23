@@ -13,15 +13,15 @@ import java.util.UUID
 
 
 data class IverksettDto(
-    @Schema(name = "id'en til saken", required = false, description = "Må være satt hvis saksreferanse ikke er satt")
+    @Schema(required = false, description = "Må være satt hvis saksreferanse ikke er satt")
     val sakId: UUID? = null,
-    @Size(max = 20)
-    @Schema(name = "saksreferanse", required = false, description = "Må være satt hvis sakId ikke er satt")
+    @Size(min = 1, max = 20)
+    @Schema(required = false, description = "Må være satt hvis sakId ikke er satt")
     val saksreferanse: String? = null,
 
-    @Schema(name = "id'en til behandlingen som førte til vedtak", required = true)
+    @Schema(required = true)
     val behandlingId: UUID,
-    @Schema(name = "fødselsnummer eller D-nummer", required = true, defaultValue = "12345678910")
+    @Schema(required = true, description = "Fødselsnummer eller D-nummer")
     val personIdent: String,
     @Schema(required = false, description = "Må være satt for utbetalingsvedtak")
     val vedtak: VedtaksdetaljerDto = VedtaksdetaljerDto(
@@ -43,7 +43,7 @@ data class IverksettDto(
 }
 
 data class VedtaksdetaljerDto(
-    @Schema(required = true, defaultValue = "RAMMEVEDTAK")
+    @Schema(required = true)
     val vedtakstype: VedtakType,
     @Schema(required = true,)
     val vedtakstidspunkt: LocalDateTime,
@@ -110,6 +110,7 @@ enum class VedtaksperiodeType {
 
 data class ForrigeIverksettingDto (
     val behandlingId: UUID,
+    @Schema(required = false, description = "Må være identisk med utbetalingene som ble iverksatt forrige gang")
     val utbetalinger: List<UtbetalingDto> = emptyList()
 )
 
