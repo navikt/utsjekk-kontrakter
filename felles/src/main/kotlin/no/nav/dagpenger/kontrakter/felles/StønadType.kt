@@ -3,6 +3,14 @@ package no.nav.dagpenger.kontrakter.felles
 
 sealed interface StønadType {
     fun tilFagsystem(): Fagsystem
+
+    fun tilEnum(): Enum<*> {
+        return if (this is StønadTypeDagpenger) {
+            this
+        } else {
+            this as StønadTypeTiltakspenger
+        }
+    }
 }
 
 enum class StønadTypeDagpenger: StønadType {
