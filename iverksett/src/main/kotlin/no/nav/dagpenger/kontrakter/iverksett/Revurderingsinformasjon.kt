@@ -1,6 +1,7 @@
 package no.nav.dagpenger.kontrakter.iverksett
 
 import no.nav.dagpenger.kontrakter.felles.StønadType
+import no.nav.dagpenger.kontrakter.felles.StønadTypeDagpenger
 
 enum class Opplysningskilde {
     INNSENDT_SØKNAD,
@@ -11,11 +12,11 @@ enum class Opplysningskilde {
 @Suppress("EnumEntryName", "unused")
 enum class Revurderingsårsak(
     vararg stønadstyper: StønadType = arrayOf(
-        StønadType.DAGPENGER_ARBEIDSSOKER_ORDINAER
+        StønadTypeDagpenger.DAGPENGER_ARBEIDSSOKER_ORDINAER
     ),
 ) {
-    ENDRING_INNTEKT(StønadType.DAGPENGER_ARBEIDSSOKER_ORDINAER),
-    SYKDOM(StønadType.DAGPENGER_ARBEIDSSOKER_ORDINAER),
+    ENDRING_INNTEKT(StønadTypeDagpenger.DAGPENGER_ARBEIDSSOKER_ORDINAER),
+    SYKDOM(StønadTypeDagpenger.DAGPENGER_ARBEIDSSOKER_ORDINAER),
     ANNET,
     KLAGE_OMGJØRING,
     ANKE_OMGJØRING,
