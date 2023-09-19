@@ -1,5 +1,7 @@
 package no.nav.dagpenger.kontrakter.felles
 
+import com.fasterxml.jackson.annotation.JsonCreator
+
 
 sealed interface StønadType {
     fun tilFagsystem(): Fagsystem
@@ -11,9 +13,22 @@ sealed interface StønadType {
             this as StønadTypeTiltakspenger
         }
     }
+
+    @JsonCreator
+    fun deserialize(json: String): StønadType? {
+        return Result.runCatching { StønadTypeDagpenger.valueOf(json) }.fold(
+            onSuccess = { it },
+            onFailure = {
+                Result.runCatching { StønadTypeTiltakspenger.valueOf(json) }.fold(
+                    onSuccess = { it },
+                    onFailure = { null }
+                )
+            }
+        )
+    }
 }
 
-enum class StønadTypeDagpenger: StønadType {
+enum class StønadTypeDagpenger : StønadType {
     DAGPENGER_ARBEIDSSOKER_ORDINAER,
     DAGPENGER_PERMITTERING_ORDINAER,
     DAGPENGER_PERMITTERING_FISKEINDUSTRI,
@@ -22,7 +37,7 @@ enum class StønadTypeDagpenger: StønadType {
     override fun tilFagsystem(): Fagsystem = Fagsystem.Dagpenger
 }
 
-enum class StønadTypeTiltakspenger: StønadType {
+enum class StønadTypeTiltakspenger : StønadType {
     TILTAKSPENGER,
     TILTAKSPENGER_BARNETILLEGG_HOYERE_UTDANNING,
     TILTAKSPENGER_BARNETILLEGG_JOBBKLUBB_2009,
