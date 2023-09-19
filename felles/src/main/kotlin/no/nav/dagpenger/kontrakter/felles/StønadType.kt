@@ -2,7 +2,6 @@ package no.nav.dagpenger.kontrakter.felles
 
 import com.fasterxml.jackson.annotation.JsonCreator
 
-
 sealed interface StønadType {
     fun tilFagsystem(): Fagsystem
 
@@ -14,18 +13,18 @@ sealed interface StønadType {
         }
     }
 
-    @JsonCreator
-    fun deserialize(json: String): StønadType? {
-        return Result.runCatching { StønadTypeDagpenger.valueOf(json) }.fold(
-            onSuccess = { it },
-            onFailure = {
-                Result.runCatching { StønadTypeTiltakspenger.valueOf(json) }.fold(
-                    onSuccess = { it },
-                    onFailure = { null }
-                )
-            }
-        )
+    companion object {
+        @JsonCreator
+        @JvmStatic
+        fun deserialize(json: String): StønadType? {
+            return Result.runCatching { StønadTypeDagpenger.valueOf(json) }
+                .getOrElse {
+                    Result.runCatching { StønadTypeTiltakspenger.valueOf(json) }
+                        .getOrNull()
+                }
+        }
     }
+
 }
 
 enum class StønadTypeDagpenger : StønadType {
