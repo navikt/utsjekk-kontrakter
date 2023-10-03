@@ -55,33 +55,12 @@ data class VedtaksdetaljerDto(
     val vedtaksperioder: List<VedtaksperiodeDto> = emptyList(),
 )
 
-data class VedtaksstatusDto(
-    val vedtakstype: VedtakType = VedtakType.RAMMEVEDTAK,
-    val vedtakstidspunkt: LocalDateTime,
-    val resultat: Vedtaksresultat,
-    val vedtaksperioder: List<VedtaksperiodeDto> = emptyList(),
-)
-
-data class VedtaksperiodeDto(
-    val fraOgMedDato: LocalDate,
-    val tilOgMedDato: LocalDate? = null,
-    val periodeType: VedtaksperiodeType = VedtaksperiodeType.HOVEDPERIODE,
-)
-
 enum class IverksettStatus {
     SENDT_TIL_OPPDRAG,
     FEILET_MOT_OPPDRAG,
     JOURNALFORT,
     OK,
     IKKE_PAABEGYNT,
-}
-
-enum class VedtaksperiodeType {
-    MIGRERING,
-    FORLENGELSE,
-    HOVEDPERIODE,
-    UTVIDELSE,
-    SANKSJON
 }
 
 data class ForrigeIverksettingDto (
