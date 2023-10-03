@@ -2,14 +2,10 @@ package no.nav.dagpenger.kontrakter.iverksett
 
 import io.swagger.v3.oas.annotations.media.Schema
 import jakarta.validation.constraints.Size
-import no.nav.dagpenger.kontrakter.felles.BrevmottakerDto
-import no.nav.dagpenger.kontrakter.felles.Datoperiode
-import no.nav.dagpenger.kontrakter.felles.SakIdentifikator
-import no.nav.dagpenger.kontrakter.felles.Tilbakekrevingsvalg
-import java.math.BigDecimal
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.UUID
+import no.nav.dagpenger.kontrakter.felles.SakIdentifikator
 
 
 data class IverksettDto(
@@ -53,18 +49,10 @@ data class VedtaksdetaljerDto(
     val saksbehandlerId: String,
     @Schema(required = true,)
     val beslutterId: String,
-    @Schema(hidden = true)
-    val opphorAarsak: OpphørÅrsak? = null,
-    @Schema(hidden = true)
-    val avslagAarsak: AvslagÅrsak? = null,
     @Schema(required = false)
     val utbetalinger: List<UtbetalingDto> = emptyList(),
     @Schema(hidden = true)
     val vedtaksperioder: List<VedtaksperiodeDto> = emptyList(),
-    @Schema(hidden = true)
-    val tilbakekreving: TilbakekrevingDto? = null,
-    @Schema(hidden = true)
-    val brevmottakere: List<BrevmottakerDto> = emptyList(),
 )
 
 data class VedtaksstatusDto(
@@ -80,21 +68,9 @@ data class VedtaksperiodeDto(
     val periodeType: VedtaksperiodeType = VedtaksperiodeType.HOVEDPERIODE,
 )
 
-data class TilbakekrevingDto(
-    val tilbakekrevingsvalg: Tilbakekrevingsvalg,
-    val tilbakekrevingMedVarsel: TilbakekrevingMedVarselDto?,
-)
-
-data class TilbakekrevingMedVarselDto(
-    val varseltekst: String,
-    val sumFeilutbetaling: BigDecimal? = null, // Hentes fra simulering hvis det mangler
-    val fellesperioder: List<Datoperiode> = emptyList()
-) // Hentes fra simulering hvis det mangler
-
 enum class IverksettStatus {
     SENDT_TIL_OPPDRAG,
     FEILET_MOT_OPPDRAG,
-    OK_MOT_OPPDRAG,
     JOURNALFORT,
     OK,
     IKKE_PAABEGYNT,
