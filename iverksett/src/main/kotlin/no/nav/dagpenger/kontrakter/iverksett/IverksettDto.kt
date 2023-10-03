@@ -58,7 +58,6 @@ data class VedtaksdetaljerDto(
 enum class IverksettStatus {
     SENDT_TIL_OPPDRAG,
     FEILET_MOT_OPPDRAG,
-    JOURNALFORT,
     OK,
     IKKE_PAABEGYNT,
 }
