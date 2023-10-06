@@ -2,7 +2,6 @@ package no.nav.dagpenger.kontrakter.iverksett
 
 import io.swagger.v3.oas.annotations.media.Schema
 import jakarta.validation.constraints.Size
-import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.UUID
 import no.nav.dagpenger.kontrakter.felles.SakIdentifikator
@@ -14,7 +13,6 @@ data class IverksettDto(
     @Size(min = 1, max = 20)
     @Schema(required = false, description = "Må være satt hvis sakId ikke er satt")
     val saksreferanse: String? = null,
-
     @Schema(required = true)
     val behandlingId: UUID,
     @Schema(required = true, description = "Fødselsnummer eller D-nummer")
@@ -27,10 +25,7 @@ data class IverksettDto(
         saksbehandlerId = "",
         beslutterId = ""
     ),
-    @Deprecated("Bruk forrigeIverksetting")
-    @Schema(hidden = true)
-    val utbetalingerPaaForrigeVedtak: List<UtbetalingDto> = emptyList(),
-    @Schema(required = false, description = "Må vøre satt hvis det ikke er første iverksetting")
+    @Schema(required = false, description = "Må være satt hvis det ikke er første iverksetting")
     val forrigeIverksetting: ForrigeIverksettingDto? = null
 ) {
     init {
@@ -41,13 +36,13 @@ data class IverksettDto(
 data class VedtaksdetaljerDto(
     @Schema(required = true)
     val vedtakstype: VedtakType,
-    @Schema(required = true,)
+    @Schema(required = true)
     val vedtakstidspunkt: LocalDateTime,
-    @Schema(required = true,)
+    @Schema(required = true)
     val resultat: Vedtaksresultat,
-    @Schema(required = true,)
+    @Schema(required = true)
     val saksbehandlerId: String,
-    @Schema(required = true,)
+    @Schema(required = true)
     val beslutterId: String,
     @Schema(required = false)
     val utbetalinger: List<UtbetalingDto> = emptyList(),
@@ -64,8 +59,6 @@ enum class IverksettStatus {
 
 data class ForrigeIverksettingDto (
     val behandlingId: UUID,
-    @Schema(required = false, description = "Må være identisk med utbetalingene som ble iverksatt forrige gang")
-    val utbetalinger: List<UtbetalingDto> = emptyList()
 )
 
 
