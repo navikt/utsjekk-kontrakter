@@ -7,7 +7,7 @@ import no.nav.dagpenger.kontrakter.felles.StønadTypeDagpenger
 import no.nav.dagpenger.kontrakter.felles.StønadTypeTiltakspenger
 
 data class UtbetalingDto(
-
+    @Schema(description = "Må være et positivt heltall")
     val belopPerDag: Int,
     val fraOgMedDato: LocalDate,
     val tilOgMedDato: LocalDate,
