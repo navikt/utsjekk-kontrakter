@@ -17,6 +17,7 @@ data class Utbetalingsoppdrag(
     val saksbehandlerId: String,
     val avstemmingTidspunkt: LocalDateTime = LocalDateTime.now(),
     val utbetalingsperiode: List<Utbetalingsperiode>,
+    val enhet: String? = null,
     val gOmregning: Boolean = false
 ) {
 
