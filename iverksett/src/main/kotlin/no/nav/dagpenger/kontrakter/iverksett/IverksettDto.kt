@@ -17,13 +17,6 @@ data class IverksettDto(
     val behandlingId: UUID,
     @Schema(required = true, description = "Fødselsnummer eller D-nummer")
     val personIdent: String,
-    @Schema(
-        required = false,
-        description = "Settes kun for tiltakspenger. Enheten som gjennomfører tiltaket.",
-        pattern = "^\\d{4}\$",
-        example = "4444"
-    )
-    val enhet: String? = null,
     @Schema(required = false, description = "Må være satt for utbetalingsvedtak")
     val vedtak: VedtaksdetaljerDto = VedtaksdetaljerDto(
         vedtakstype = VedtakType.RAMMEVEDTAK,
@@ -51,6 +44,13 @@ data class VedtaksdetaljerDto(
     val saksbehandlerId: String,
     @Schema(required = true)
     val beslutterId: String,
+    @Schema(
+        required = false,
+        description = "Settes kun for tiltakspenger. Enheten som gjennomfører tiltaket.",
+        pattern = "^\\d{4}\$",
+        example = "4444"
+    )
+    val enhet: String? = null,
     @Schema(required = false)
     val utbetalinger: List<UtbetalingDto> = emptyList(),
     @Schema(hidden = true)
