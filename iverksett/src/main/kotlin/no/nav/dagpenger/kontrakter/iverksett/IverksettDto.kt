@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema
 import jakarta.validation.constraints.Size
 import java.time.LocalDateTime
 import java.util.UUID
+import no.nav.dagpenger.kontrakter.felles.BrukersNavKontor
 import no.nav.dagpenger.kontrakter.felles.SakIdentifikator
 
 
@@ -46,11 +47,9 @@ data class VedtaksdetaljerDto(
     val beslutterId: String,
     @Schema(
         required = false,
-        description = "Settes kun for tiltakspenger. Enheten som gjennomfører tiltaket.",
-        pattern = "^\\d{4}\$",
-        example = "4444"
+        description = "Settes kun for tiltakspenger",
     )
-    val enhet: String? = null,
+    val brukersNavKontor: BrukersNavKontor? = null,
     @Schema(required = false)
     val utbetalinger: List<UtbetalingDto> = emptyList(),
     @Schema(hidden = true)

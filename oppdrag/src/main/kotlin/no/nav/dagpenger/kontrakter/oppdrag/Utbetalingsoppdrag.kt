@@ -7,6 +7,7 @@ import java.math.BigDecimal
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.UUID
+import no.nav.dagpenger.kontrakter.felles.BrukersNavKontor
 
 data class Utbetalingsoppdrag(
     val kodeEndring: KodeEndring,
@@ -17,7 +18,7 @@ data class Utbetalingsoppdrag(
     val saksbehandlerId: String,
     val avstemmingTidspunkt: LocalDateTime = LocalDateTime.now(),
     val utbetalingsperiode: List<Utbetalingsperiode>,
-    val enhet: String? = null,
+    val brukersNavKontor: BrukersNavKontor? = null,
     val gOmregning: Boolean = false
 ) {
 
