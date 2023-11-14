@@ -41,9 +41,19 @@ data class VedtaksdetaljerDto(
     val vedtakstidspunkt: LocalDateTime,
     @Schema(required = true)
     val resultat: Vedtaksresultat,
-    @Schema(required = true)
+    @Schema(
+        required = true,
+        description = "NAV-ident til saksbehandler, eller servicebruker til applikasjon dersom vedtaket er fattet fullautomatisk",
+        pattern = "^[A-Z]\\d{6}\$",
+        example = "Z123456"
+    )
     val saksbehandlerId: String,
-    @Schema(required = true)
+    @Schema(
+        required = true,
+        description = "NAV-ident til saksbehandler, eller servicebruker til applikasjon dersom vedtaket er fattet fullautomatisk",
+        pattern = "^[A-Z]\\d{6}\$",
+        example = "Z123456"
+    )
     val beslutterId: String,
     @Schema(
         required = false,
