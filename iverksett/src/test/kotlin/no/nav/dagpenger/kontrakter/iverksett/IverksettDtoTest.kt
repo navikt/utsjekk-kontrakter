@@ -5,20 +5,29 @@ import no.nav.dagpenger.kontrakter.felles.*
 import org.intellij.lang.annotations.Language
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
+import org.junit.jupiter.api.assertThrows
 import java.util.*
 
 class IverksettDtoTest {
 
     @Test
+    fun `tillater ikke tomme saksreferanser`() {
+        assertThrows<IllegalArgumentException> {
+            enIverksettDto(saksreferanse = "")
+        }
+    }
+
+    @Test
+    fun `tillater ikke saksreferanser over 20 tegn`() {
+        assertThrows<IllegalArgumentException> {
+            enIverksettDto(saksreferanse = "aaaaaaaaaaaaaaaaaaaaa")
+        }
+    }
+
+    @Test
     fun `serialiserer og deserialiserer`() {
-        val dto = IverksettDto(
-            sakId = UUID.randomUUID(),
-            saksreferanse = "S-123456",
-            behandlingId = UUID.randomUUID(),
-            personident = Personident("15507600333"),
-        )
         assertDoesNotThrow {
-            objectMapper.readValue<IverksettDto>(objectMapper.writeValueAsString(dto))
+            objectMapper.readValue<IverksettDto>(objectMapper.writeValueAsString(enIverksettDto()))
         }
     }
 
@@ -31,6 +40,13 @@ class IverksettDtoTest {
     fun `deserialiserer dto med stønadstype for tiltakspenger`() {
         assertDoesNotThrow { objectMapper.readValue<IverksettDto>(json(StønadTypeTiltakspenger.TILTAKSPENGER)) }
     }
+
+    private fun enIverksettDto(saksreferanse: String = "S-123456") = IverksettDto(
+        sakId = UUID.randomUUID(),
+        saksreferanse = saksreferanse,
+        behandlingId = UUID.randomUUID(),
+        personident = Personident("15507600333"),
+    )
 
     @Language("json")
     private fun json(stønadType: StønadType) = """

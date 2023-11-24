@@ -11,8 +11,13 @@ data class SakIdentifikator(
         if (this.sakId == null && this.saksreferanse == null) {
             throw IllegalArgumentException("SakIdentifikator må ha enten sakId eller saksreferanse")
         }
-        if(this.saksreferanse!=null && this.saksreferanse.length > 20) {
+
+        if (this.saksreferanse != null && this.saksreferanse.length > 20) {
             throw IllegalArgumentException("saksreferanse kan ikke være mer enn 20 tegn")
+        }
+
+        if (this.saksreferanse != null && this.saksreferanse.isEmpty()) {
+            throw IllegalArgumentException("saksreferanse kan ikke være en tom streng")
         }
     }
 
