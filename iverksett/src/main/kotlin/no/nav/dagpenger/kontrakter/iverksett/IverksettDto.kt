@@ -2,23 +2,27 @@ package no.nav.dagpenger.kontrakter.iverksett
 
 import io.swagger.v3.oas.annotations.media.Schema
 import jakarta.validation.constraints.Size
-import java.time.LocalDateTime
-import java.util.UUID
 import no.nav.dagpenger.kontrakter.felles.BrukersNavKontor
+import no.nav.dagpenger.kontrakter.felles.Personident
 import no.nav.dagpenger.kontrakter.felles.SakIdentifikator
+import java.time.LocalDateTime
+import java.util.*
 
 
 data class IverksettDto(
-    @Schema(required = false, description = "Må være satt hvis saksreferanse ikke er satt")
+    @Schema(description = "Må være satt hvis saksreferanse ikke er satt")
     val sakId: UUID? = null,
     @Size(min = 1, max = 20)
-    @Schema(required = false, description = "Må være satt hvis sakId ikke er satt")
+    @Schema(description = "Må være satt hvis sakId ikke er satt")
     val saksreferanse: String? = null,
     @Schema(required = true)
     val behandlingId: UUID,
+    @Schema(description = "Fødselsnummer eller D-nummer")
+    @Deprecated(message = "Bruk personident")
+    val personIdent: String? = null,
     @Schema(required = true, description = "Fødselsnummer eller D-nummer")
-    val personIdent: String,
-    @Schema(required = false, description = "Må være satt for utbetalingsvedtak")
+    val personident: Personident,
+    @Schema(description = "Må være satt for utbetalingsvedtak")
     val vedtak: VedtaksdetaljerDto = VedtaksdetaljerDto(
         vedtakstype = VedtakType.RAMMEVEDTAK,
         vedtakstidspunkt = LocalDateTime.now(),
@@ -26,7 +30,7 @@ data class IverksettDto(
         saksbehandlerId = "",
         beslutterId = ""
     ),
-    @Schema(required = false, description = "Må være satt hvis det ikke er første iverksetting")
+    @Schema(description = "Må være satt hvis det ikke er første iverksetting")
     val forrigeIverksetting: ForrigeIverksettingDto? = null
 ) {
     init {
@@ -66,6 +70,7 @@ data class VedtaksdetaljerDto(
     val vedtaksperioder: List<VedtaksperiodeDto> = emptyList(),
 )
 
+@Suppress("unused")
 enum class IverksettStatus {
     SENDT_TIL_OPPDRAG,
     FEILET_MOT_OPPDRAG,
@@ -73,7 +78,7 @@ enum class IverksettStatus {
     IKKE_PAABEGYNT,
 }
 
-data class ForrigeIverksettingDto (
+data class ForrigeIverksettingDto(
     val behandlingId: UUID,
 )
 

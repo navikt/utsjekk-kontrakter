@@ -1,16 +1,26 @@
 package no.nav.dagpenger.kontrakter.iverksett
 
 import com.fasterxml.jackson.module.kotlin.readValue
-import no.nav.dagpenger.kontrakter.felles.StønadType
-import no.nav.dagpenger.kontrakter.felles.StønadTypeDagpenger
-import no.nav.dagpenger.kontrakter.felles.StønadTypeTiltakspenger
-import no.nav.dagpenger.kontrakter.felles.objectMapper
+import no.nav.dagpenger.kontrakter.felles.*
 import org.intellij.lang.annotations.Language
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
+import java.util.*
 
 class IverksettDtoTest {
 
+    @Test
+    fun `serialiserer og deserialiserer`() {
+        val dto = IverksettDto(
+            sakId = UUID.randomUUID(),
+            saksreferanse = "S-123456",
+            behandlingId = UUID.randomUUID(),
+            personident = Personident("15507600333"),
+        )
+        assertDoesNotThrow {
+            objectMapper.readValue<IverksettDto>(objectMapper.writeValueAsString(dto))
+        }
+    }
 
     @Test
     fun `deserialiserer dto med stønadstype for dagpenger`() {
@@ -28,7 +38,7 @@ class IverksettDtoTest {
           "sakId": "234bed7c-b1d3-11eb-9999-0242ac130003",
           "saksreferanse": "S-123456",
           "behandlingId": "234bed7c-b1d3-11eb-8529-0242ac130003",
-          "personIdent": "12345678901",
+          "personident": "15507600333",
           "vedtak": {
             "vedtakstype": "RAMMEVEDTAK",
             "vedtakstidspunkt": "2021-05-10T01:00:00",
