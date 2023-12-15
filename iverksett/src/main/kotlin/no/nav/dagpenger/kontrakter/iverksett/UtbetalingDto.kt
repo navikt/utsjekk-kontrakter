@@ -17,8 +17,10 @@ data class UtbetalingDto(
         defaultValue = "DAGPENGER_ARBEIDSSOKER_ORDINAER"
     )
     val stonadstype: StønadType = StønadTypeDagpenger.DAGPENGER_ARBEIDSSOKER_ORDINAER,
-    @Schema(required = false, description = "Settes kun ved ferietillegg")
-    val ferietillegg: Ferietillegg? = null
+    @Schema(required = false, description = "Settes kun ved ferietillegg for dagpenger")
+    val ferietillegg: Ferietillegg? = null,
+    @Schema(required = false, description = "Settes kun ved barnetillegg for tiltakspenger")
+    val barnetillegg: Boolean? = null
 )
 
 enum class Ferietillegg {
