@@ -3,7 +3,7 @@ package no.nav.dagpenger.kontrakter.felles
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.databind.JsonNode
 
-data class Personident(val verdi: String) {
+class Personident(verdi: String) : Ident(verdi) {
     init {
         check(gyldig()) { "Personidenten er ugyldig" }
     }

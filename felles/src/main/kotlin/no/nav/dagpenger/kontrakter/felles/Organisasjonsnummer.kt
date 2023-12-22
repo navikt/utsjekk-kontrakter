@@ -3,7 +3,7 @@ package no.nav.dagpenger.kontrakter.felles
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.databind.JsonNode
 
-data class Organisasjonsnummer(val verdi: String) {
+class Organisasjonsnummer(verdi: String) : Ident(verdi) {
     init {
         check(gyldig()) { "Organisasjonsnummeret er ugyldig" }
     }
