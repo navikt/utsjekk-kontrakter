@@ -48,7 +48,7 @@ data class VedtaksdetaljerDto(
     val saksbehandlerId: String,
     @Schema(
         required = true,
-        description = "NAV-ident til saksbehandler, eller servicebruker til applikasjon dersom vedtaket er fattet fullautomatisk",
+        description = "NAV-ident til beslutter, eller servicebruker til applikasjon dersom vedtaket er fattet fullautomatisk",
         pattern = "^[A-Z]\\d{6}\$",
         example = "Z123456",
     )
