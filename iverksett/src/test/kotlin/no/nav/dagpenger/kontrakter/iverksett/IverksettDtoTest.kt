@@ -9,7 +9,6 @@ import org.junit.jupiter.api.assertThrows
 import java.util.*
 
 class IverksettDtoTest {
-
     @Test
     fun `tillater ikke tomme saksreferanser`() {
         assertThrows<IllegalArgumentException> {
@@ -33,7 +32,7 @@ class IverksettDtoTest {
 
     @Test
     fun `deserialiserer dto med stønadstype for dagpenger`() {
-        assertDoesNotThrow { objectMapper.readValue<IverksettDto>(json(StønadTypeDagpenger.DAGPENGER_ARBEIDSSOKER_ORDINAER)) }
+        assertDoesNotThrow { objectMapper.readValue<IverksettDto>(json(StønadTypeDagpenger.DAGPENGER_ARBEIDSSØKER_ORDINÆR)) }
     }
 
     @Test
@@ -41,15 +40,17 @@ class IverksettDtoTest {
         assertDoesNotThrow { objectMapper.readValue<IverksettDto>(json(StønadTypeTiltakspenger.JOBBKLUBB)) }
     }
 
-    private fun enIverksettDto(saksreferanse: String = "S-123456") = IverksettDto(
-        sakId = UUID.randomUUID(),
-        saksreferanse = saksreferanse,
-        behandlingId = UUID.randomUUID(),
-        personident = Personident("15507600333"),
-    )
+    private fun enIverksettDto(saksreferanse: String = "S-123456") =
+        IverksettDto(
+            sakId = UUID.randomUUID(),
+            saksreferanse = saksreferanse,
+            behandlingId = UUID.randomUUID(),
+            personident = Personident("15507600333"),
+        )
 
     @Language("json")
-    private fun json(stønadType: StønadType) = """
+    private fun json(stønadType: StønadType) =
+        """
         {
           "sakId": "234bed7c-b1d3-11eb-9999-0242ac130003",
           "saksreferanse": "S-123456",
@@ -68,8 +69,9 @@ class IverksettDtoTest {
                 "belopPerDag": 10,
                 "fraOgMedDato": "2021-05-01",
                 "tilOgMedDato": "2021-05-31",
-                "stonadstype": "$stønadType",
-                "ferietillegg": "ORDINAER"
+                "stønadsdata": {
+                  "stønadstype": "$stønadType"
+                }
               }
             ],
             "vedtaksperioder": [
@@ -92,5 +94,5 @@ class IverksettDtoTest {
           "utbetalingerPaaForrigeVedtak": [],
           "forrigeIverksetting": null
         }
-    """.trimIndent()
+        """.trimIndent()
 }

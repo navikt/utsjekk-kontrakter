@@ -8,7 +8,6 @@ import no.nav.dagpenger.kontrakter.felles.SakIdentifikator
 import java.time.LocalDateTime
 import java.util.*
 
-
 data class IverksettDto(
     @Schema(description = "Må være satt hvis saksreferanse ikke er satt")
     val sakId: UUID? = null,
@@ -17,21 +16,18 @@ data class IverksettDto(
     val saksreferanse: String? = null,
     @Schema(required = true)
     val behandlingId: UUID,
-    @Schema(description = "Fødselsnummer eller D-nummer")
-    @Deprecated(message = "Bruk personident")
-    val personIdent: String? = null,
-    @Schema(required = true, description = "Fødselsnummer eller D-nummer")
+    @Schema(required = true, description = "Fødselsnummer eller D-nummer", example = "15507600333", type = "string")
     val personident: Personident,
     @Schema(description = "Må være satt for utbetalingsvedtak")
-    val vedtak: VedtaksdetaljerDto = VedtaksdetaljerDto(
-        vedtakstype = VedtakType.RAMMEVEDTAK,
-        vedtakstidspunkt = LocalDateTime.now(),
-        resultat = Vedtaksresultat.INNVILGET,
-        saksbehandlerId = "",
-        beslutterId = ""
-    ),
+    val vedtak: VedtaksdetaljerDto =
+        VedtaksdetaljerDto(
+            vedtakstidspunkt = LocalDateTime.now(),
+            resultat = Vedtaksresultat.INNVILGET,
+            saksbehandlerId = "",
+            beslutterId = "",
+        ),
     @Schema(description = "Må være satt hvis det ikke er første iverksetting")
-    val forrigeIverksetting: ForrigeIverksettingDto? = null
+    val forrigeIverksetting: ForrigeIverksettingDto? = null,
 ) {
     init {
         SakIdentifikator.valider(sakId, saksreferanse)
@@ -40,8 +36,6 @@ data class IverksettDto(
 
 data class VedtaksdetaljerDto(
     @Schema(required = true)
-    val vedtakstype: VedtakType,
-    @Schema(required = true)
     val vedtakstidspunkt: LocalDateTime,
     @Schema(required = true)
     val resultat: Vedtaksresultat,
@@ -49,14 +43,14 @@ data class VedtaksdetaljerDto(
         required = true,
         description = "NAV-ident til saksbehandler, eller servicebruker til applikasjon dersom vedtaket er fattet fullautomatisk",
         pattern = "^[A-Z]\\d{6}\$",
-        example = "Z123456"
+        example = "Z123456",
     )
     val saksbehandlerId: String,
     @Schema(
         required = true,
         description = "NAV-ident til saksbehandler, eller servicebruker til applikasjon dersom vedtaket er fattet fullautomatisk",
         pattern = "^[A-Z]\\d{6}\$",
-        example = "Z123456"
+        example = "Z123456",
     )
     val beslutterId: String,
     @Schema(
@@ -81,6 +75,3 @@ enum class IverksettStatus {
 data class ForrigeIverksettingDto(
     val behandlingId: UUID,
 )
-
-
-

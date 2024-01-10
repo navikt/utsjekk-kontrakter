@@ -1,7 +1,7 @@
 package no.nav.dagpenger.kontrakter.felles
 
 enum class BrukerIdType {
-    AKTOERID,
+    AKTØRID,
     FNR,
-    ORGNR
+    ORGNR,
 }

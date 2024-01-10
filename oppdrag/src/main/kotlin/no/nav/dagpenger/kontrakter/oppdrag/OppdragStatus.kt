@@ -1,10 +1,10 @@
 package no.nav.dagpenger.kontrakter.oppdrag
 
 enum class OppdragStatus {
-    LAGT_PAA_KOE,
+    LAGT_PÅ_KØ,
     KVITTERT_OK,
     KVITTERT_MED_MANGLER,
     KVITTERT_FUNKSJONELL_FEIL,
     KVITTERT_TEKNISK_FEIL,
-    KVITTERT_UKJENT
+    KVITTERT_UKJENT,
 }

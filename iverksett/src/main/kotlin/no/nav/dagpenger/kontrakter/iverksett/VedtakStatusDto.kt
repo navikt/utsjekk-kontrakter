@@ -4,7 +4,6 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 
 data class VedtaksstatusDto(
-    val vedtakstype: VedtakType = VedtakType.RAMMEVEDTAK,
     val vedtakstidspunkt: LocalDateTime,
     val resultat: Vedtaksresultat,
     val vedtaksperioder: List<VedtaksperiodeDto> = emptyList(),
@@ -21,5 +20,5 @@ enum class VedtaksperiodeType {
     FORLENGELSE,
     HOVEDPERIODE,
     UTVIDELSE,
-    SANKSJON
+    SANKSJON,
 }

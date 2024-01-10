@@ -1,27 +1,26 @@
 package no.nav.dagpenger.kontrakter.oppdrag
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import no.nav.dagpenger.kontrakter.felles.BrukersNavKontor
 import no.nav.dagpenger.kontrakter.felles.Fagsystem
 import no.nav.dagpenger.kontrakter.felles.SakIdentifikator
 import java.math.BigDecimal
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.UUID
-import no.nav.dagpenger.kontrakter.felles.BrukersNavKontor
 
 data class Utbetalingsoppdrag(
     val kodeEndring: KodeEndring,
     val fagSystem: Fagsystem = Fagsystem.Dagpenger,
     val saksnummer: UUID? = null,
     val saksreferanse: String? = null,
-    val aktoer: String,
+    val aktør: String,
     val saksbehandlerId: String,
     val avstemmingTidspunkt: LocalDateTime = LocalDateTime.now(),
     val utbetalingsperiode: List<Utbetalingsperiode>,
     val brukersNavKontor: BrukersNavKontor? = null,
-    val gOmregning: Boolean = false
+    val gOmregning: Boolean = false,
 ) {
-
     init {
         SakIdentifikator.valider(saksnummer, saksreferanse)
     }
@@ -29,10 +28,8 @@ data class Utbetalingsoppdrag(
     enum class KodeEndring {
         NY,
         ENDR,
-        UEND
+        UEND,
     }
-
-
 }
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -49,21 +46,20 @@ data class Utbetalingsperiode(
     val satsType: SatsType,
     val utbetalesTil: String,
     val behandlingId: UUID,
-    val utbetalingsgrad: Int? = null
+    val utbetalingsgrad: Int? = null,
 ) {
-
     enum class SatsType {
         DAG,
         MND,
-        ENG
+        ENG,
     }
 }
 
 data class Opphør(val opphørDatoFom: LocalDate)
 
 enum class UtbetalingType(val kode: String) {
-    DAGPENGER_ARBEIDSSOKER_ORDINAER("DPORAS"),
-    DAGPENGER_PERMITTERING_ORDINAER("DPPEAS"),
+    DAGPENGER_ARBEIDSSØKER_ORDINÆR("DPORAS"),
+    DAGPENGER_PERMITTERING_ORDINÆR("DPPEAS"),
     DAGPENGER_PERMITTERING_FISKEINDUSTRI("DPPEFI"),
-    DAGPENGER_EOS("DPDPASISP1"),
+    DAGPENGER_EØS("DPDPASISP1"),
 }
