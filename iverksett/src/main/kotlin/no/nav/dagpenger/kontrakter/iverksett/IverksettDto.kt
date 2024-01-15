@@ -22,11 +22,10 @@ data class IverksettDto(
     val vedtak: VedtaksdetaljerDto =
         VedtaksdetaljerDto(
             vedtakstidspunkt = LocalDateTime.now(),
-            resultat = Vedtaksresultat.INNVILGET,
             saksbehandlerId = "",
             beslutterId = "",
         ),
-    @Schema(description = "Må være satt hvis det ikke er første iverksetting")
+    @Schema(description = "Må være satt hvis det ikke er første iverksetting på saken")
     val forrigeIverksetting: ForrigeIverksettingDto? = null,
 ) {
     init {
@@ -37,8 +36,6 @@ data class IverksettDto(
 data class VedtaksdetaljerDto(
     @Schema(required = true)
     val vedtakstidspunkt: LocalDateTime,
-    @Schema(required = true)
-    val resultat: Vedtaksresultat,
     @Schema(
         required = true,
         description = "NAV-ident til saksbehandler, eller servicebruker til applikasjon dersom vedtaket er fattet fullautomatisk",
@@ -60,8 +57,6 @@ data class VedtaksdetaljerDto(
     val brukersNavKontor: BrukersNavKontor? = null,
     @Schema(required = false)
     val utbetalinger: List<UtbetalingDto> = emptyList(),
-    @Schema(hidden = true)
-    val vedtaksperioder: List<VedtaksperiodeDto> = emptyList(),
 )
 
 @Suppress("unused")
