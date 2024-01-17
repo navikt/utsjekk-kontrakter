@@ -1,21 +1,16 @@
 package no.nav.dagpenger.kontrakter.iverksett
 
 import io.swagger.v3.oas.annotations.media.Schema
-import jakarta.validation.constraints.Size
 import no.nav.dagpenger.kontrakter.felles.BrukersNavKontor
+import no.nav.dagpenger.kontrakter.felles.GeneriskId
 import no.nav.dagpenger.kontrakter.felles.Personident
-import no.nav.dagpenger.kontrakter.felles.SakIdentifikator
 import java.time.LocalDateTime
-import java.util.*
 
 data class IverksettDto(
-    @Schema(description = "Må være satt hvis saksreferanse ikke er satt")
-    val sakId: UUID? = null,
-    @Size(min = 1, max = 20)
-    @Schema(description = "Må være satt hvis sakId ikke er satt")
-    val saksreferanse: String? = null,
-    @Schema(required = true)
-    val behandlingId: UUID,
+    @Schema(required = true, description = "SakId skal enten være en UUID eller en string med maks 20 tegn")
+    val sakId: GeneriskId,
+    @Schema(required = true, description = "BehandlingId skal enten være en UUID eller en string med maks 20 tegn")
+    val behandlingId: GeneriskId,
     @Schema(required = true, description = "Fødselsnummer eller D-nummer", example = "15507600333", type = "string")
     val personident: Personident,
     @Schema(description = "Må være satt for utbetalingsvedtak")
@@ -27,11 +22,7 @@ data class IverksettDto(
         ),
     @Schema(description = "Må være satt hvis det ikke er første iverksetting på saken")
     val forrigeIverksetting: ForrigeIverksettingDto? = null,
-) {
-    init {
-        SakIdentifikator.valider(sakId, saksreferanse)
-    }
-}
+)
 
 data class VedtaksdetaljerDto(
     @Schema(required = true)
@@ -68,5 +59,5 @@ enum class IverksettStatus {
 }
 
 data class ForrigeIverksettingDto(
-    val behandlingId: UUID,
+    val behandlingId: GeneriskId,
 )

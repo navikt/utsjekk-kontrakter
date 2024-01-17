@@ -42,9 +42,8 @@ class IverksettDtoTest {
 
     private fun enIverksettDto(saksreferanse: String = "S-123456") =
         IverksettDto(
-            sakId = UUID.randomUUID(),
-            saksreferanse = saksreferanse,
-            behandlingId = UUID.randomUUID(),
+            sakId = GeneriskIdSomString(saksreferanse),
+            behandlingId = GeneriskIdSomUUID(UUID.randomUUID()),
             personident = Personident("15507600333"),
         )
 
@@ -53,7 +52,6 @@ class IverksettDtoTest {
         """
         {
           "sakId": "234bed7c-b1d3-11eb-9999-0242ac130003",
-          "saksreferanse": "S-123456",
           "behandlingId": "234bed7c-b1d3-11eb-8529-0242ac130003",
           "personident": "15507600333",
           "vedtak": {

@@ -3,17 +3,15 @@ package no.nav.dagpenger.kontrakter.oppdrag
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import no.nav.dagpenger.kontrakter.felles.BrukersNavKontor
 import no.nav.dagpenger.kontrakter.felles.Fagsystem
-import no.nav.dagpenger.kontrakter.felles.SakIdentifikator
+import no.nav.dagpenger.kontrakter.felles.GeneriskId
 import java.math.BigDecimal
 import java.time.LocalDate
 import java.time.LocalDateTime
-import java.util.UUID
 
 data class Utbetalingsoppdrag(
     val kodeEndring: KodeEndring,
     val fagSystem: Fagsystem = Fagsystem.Dagpenger,
-    val saksnummer: UUID? = null,
-    val saksreferanse: String? = null,
+    val saksnummer: GeneriskId,
     val aktør: String,
     val saksbehandlerId: String,
     val avstemmingTidspunkt: LocalDateTime = LocalDateTime.now(),
@@ -21,10 +19,8 @@ data class Utbetalingsoppdrag(
     val brukersNavKontor: BrukersNavKontor? = null,
     val gOmregning: Boolean = false,
 ) {
-    init {
-        SakIdentifikator.valider(saksnummer, saksreferanse)
-    }
 
+    @Suppress("unused")
     enum class KodeEndring {
         NY,
         ENDR,
@@ -45,9 +41,10 @@ data class Utbetalingsperiode(
     val sats: BigDecimal,
     val satsType: SatsType,
     val utbetalesTil: String,
-    val behandlingId: UUID,
+    val behandlingId: GeneriskId,
     val utbetalingsgrad: Int? = null,
 ) {
+    @Suppress("unused")
     enum class SatsType {
         DAG,
         MND,
@@ -57,6 +54,7 @@ data class Utbetalingsperiode(
 
 data class Opphør(val opphørDatoFom: LocalDate)
 
+@Suppress("unused")
 enum class UtbetalingType(val kode: String) {
     DAGPENGER_ARBEIDSSØKER_ORDINÆR("DPORAS"),
     DAGPENGER_PERMITTERING_ORDINÆR("DPPEAS"),
