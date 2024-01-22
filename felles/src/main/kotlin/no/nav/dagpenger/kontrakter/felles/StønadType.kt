@@ -58,3 +58,12 @@ enum class StønadTypeTiltakspenger : StønadType {
 
     override fun tilFagsystem(): Fagsystem = Fagsystem.Tiltakspenger
 }
+
+enum class StønadTypeTilleggsstønader : StønadType {
+    TILSYN_BARN_ENSLIG_FORSØRGER,
+    TILSYN_BARN_AAP,
+    TILSYN_BARN_ETTERLATTE,
+    ;
+
+    override fun tilFagsystem(): Fagsystem = Fagsystem.Tilleggsstønader
+}
