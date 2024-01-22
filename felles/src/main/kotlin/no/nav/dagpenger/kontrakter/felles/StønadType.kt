@@ -5,23 +5,14 @@ import com.fasterxml.jackson.annotation.JsonCreator
 sealed interface StønadType {
     fun tilFagsystem(): Fagsystem
 
-    fun tilEnum(): Enum<*> {
-        return if (this is StønadTypeDagpenger) {
-            this
-        } else {
-            this as StønadTypeTiltakspenger
-        }
-    }
-
     companion object {
         @JsonCreator
         @JvmStatic
         fun deserialize(json: String): StønadType? {
-            return Result.runCatching { StønadTypeDagpenger.valueOf(json) }
-                .getOrElse {
-                    Result.runCatching { StønadTypeTiltakspenger.valueOf(json) }
-                        .getOrNull()
-                }
+            val stønadstypeDagpenger = StønadTypeDagpenger.values().find { it.name == json }
+            val stønadstypeTiltakspenger = StønadTypeTiltakspenger.values().find { it.name == json }
+            val stønadstypeTilleggsstønader = StønadTypeTilleggsstønader.values().find { it.name == json }
+            return stønadstypeDagpenger ?: stønadstypeTiltakspenger ?: stønadstypeTilleggsstønader
         }
     }
 }

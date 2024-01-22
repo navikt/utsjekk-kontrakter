@@ -1,12 +1,18 @@
 package no.nav.dagpenger.kontrakter.iverksett
 
 import com.fasterxml.jackson.module.kotlin.readValue
-import no.nav.dagpenger.kontrakter.felles.*
+import no.nav.dagpenger.kontrakter.felles.GeneriskIdSomString
+import no.nav.dagpenger.kontrakter.felles.GeneriskIdSomUUID
+import no.nav.dagpenger.kontrakter.felles.Personident
+import no.nav.dagpenger.kontrakter.felles.StønadType
+import no.nav.dagpenger.kontrakter.felles.StønadTypeDagpenger
+import no.nav.dagpenger.kontrakter.felles.StønadTypeTiltakspenger
+import no.nav.dagpenger.kontrakter.felles.objectMapper
 import org.intellij.lang.annotations.Language
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
-import java.util.*
+import java.util.UUID
 
 class IverksettDtoTest {
     @Test
