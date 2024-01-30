@@ -3,9 +3,9 @@ package no.nav.dagpenger.kontrakter.felles
 import java.lang.IllegalArgumentException
 
 enum class Fagsystem(val kode: String) {
-    Dagpenger("DP"),
-    Tiltakspenger("TILTPENG"),
-    Tilleggsstønader("TILLST"),
+    DAGPENGER("DP"),
+    TILTAKSPENGER("TILTPENG"),
+    TILLEGGSSTØNADER("TILLST"),
 }
 
 fun String.tilFagsystem(): Fagsystem =

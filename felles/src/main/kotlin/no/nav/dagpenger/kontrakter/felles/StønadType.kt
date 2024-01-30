@@ -24,7 +24,7 @@ enum class StønadTypeDagpenger : StønadType {
     DAGPENGER_EØS,
     ;
 
-    override fun tilFagsystem(): Fagsystem = Fagsystem.Dagpenger
+    override fun tilFagsystem(): Fagsystem = Fagsystem.DAGPENGER
 }
 
 enum class StønadTypeTiltakspenger : StønadType {
@@ -47,7 +47,7 @@ enum class StønadTypeTiltakspenger : StønadType {
     UTVIDET_OPPFØLGING_I_OPPLÆRING,
     ;
 
-    override fun tilFagsystem(): Fagsystem = Fagsystem.Tiltakspenger
+    override fun tilFagsystem(): Fagsystem = Fagsystem.TILTAKSPENGER
 }
 
 enum class StønadTypeTilleggsstønader : StønadType {
@@ -56,5 +56,5 @@ enum class StønadTypeTilleggsstønader : StønadType {
     TILSYN_BARN_ETTERLATTE,
     ;
 
-    override fun tilFagsystem(): Fagsystem = Fagsystem.Tilleggsstønader
+    override fun tilFagsystem(): Fagsystem = Fagsystem.TILLEGGSSTØNADER
 }

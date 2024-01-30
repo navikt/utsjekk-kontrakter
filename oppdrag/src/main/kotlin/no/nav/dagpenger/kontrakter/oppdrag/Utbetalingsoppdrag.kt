@@ -11,7 +11,7 @@ import java.time.LocalDateTime
 @Suppress("unused")
 data class Utbetalingsoppdrag(
     val kodeEndring: KodeEndring,
-    val fagsystem: Fagsystem = Fagsystem.Dagpenger,
+    val fagsystem: Fagsystem = Fagsystem.DAGPENGER,
     val saksnummer: GeneriskId,
     val aktør: String,
     val saksbehandlerId: String,
