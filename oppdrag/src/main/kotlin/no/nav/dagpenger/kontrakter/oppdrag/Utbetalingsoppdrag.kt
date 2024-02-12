@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import no.nav.dagpenger.kontrakter.felles.BrukersNavKontor
 import no.nav.dagpenger.kontrakter.felles.Fagsystem
 import no.nav.dagpenger.kontrakter.felles.GeneriskId
+import no.nav.dagpenger.kontrakter.felles.Satstype
 import java.math.BigDecimal
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -41,14 +42,7 @@ data class Utbetalingsperiode(
     val utbetalesTil: String,
     val behandlingId: GeneriskId,
     val utbetalingsgrad: Int? = null,
-) {
-    @Suppress("unused")
-    enum class Satstype {
-        DAG,
-        MND,
-        ENG,
-    }
-}
+)
 
 data class Opphør(val fom: LocalDate)
 

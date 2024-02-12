@@ -2,6 +2,7 @@ package no.nav.dagpenger.kontrakter.iverksett
 
 import io.swagger.v3.oas.annotations.media.Schema
 import no.nav.dagpenger.kontrakter.felles.BrukersNavKontor
+import no.nav.dagpenger.kontrakter.felles.Satstype
 import no.nav.dagpenger.kontrakter.felles.StønadTypeTilleggsstønader
 import java.time.LocalDate
 import java.time.ZoneId

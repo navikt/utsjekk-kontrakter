@@ -1,4 +1,4 @@
-package no.nav.dagpenger.kontrakter.iverksett
+package no.nav.dagpenger.kontrakter.felles
 
 @Suppress("unused")
 enum class Satstype {

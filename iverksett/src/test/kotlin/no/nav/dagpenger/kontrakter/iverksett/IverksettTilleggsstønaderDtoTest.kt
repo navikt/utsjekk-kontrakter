@@ -2,6 +2,7 @@ package no.nav.dagpenger.kontrakter.iverksett
 
 import com.fasterxml.jackson.databind.exc.ValueInstantiationException
 import com.fasterxml.jackson.module.kotlin.readValue
+import no.nav.dagpenger.kontrakter.felles.Satstype
 import no.nav.dagpenger.kontrakter.felles.StønadTypeTilleggsstønader
 import no.nav.dagpenger.kontrakter.felles.objectMapper
 import org.intellij.lang.annotations.Language
