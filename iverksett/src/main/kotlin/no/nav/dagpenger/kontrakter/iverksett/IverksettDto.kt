@@ -56,6 +56,7 @@ enum class IverksettStatus {
     FEILET_MOT_OPPDRAG,
     OK,
     IKKE_PAABEGYNT,
+    UTBETALES_IKKE,
 }
 
 data class ForrigeIverksettingDto(
