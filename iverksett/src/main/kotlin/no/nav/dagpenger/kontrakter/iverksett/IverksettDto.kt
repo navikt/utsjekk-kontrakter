@@ -55,8 +55,8 @@ enum class IverksettStatus {
     SENDT_TIL_OPPDRAG,
     FEILET_MOT_OPPDRAG,
     OK,
-    IKKE_PAABEGYNT,
-    UTBETALES_IKKE,
+    IKKE_PÅBEGYNT,
+    OK_UTEN_UTBETALING,
 }
 
 data class ForrigeIverksettingDto(
