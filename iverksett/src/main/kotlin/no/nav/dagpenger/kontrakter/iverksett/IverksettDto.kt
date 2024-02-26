@@ -3,13 +3,15 @@ package no.nav.dagpenger.kontrakter.iverksett
 import io.swagger.v3.oas.annotations.media.Schema
 import no.nav.dagpenger.kontrakter.felles.BrukersNavKontor
 import no.nav.dagpenger.kontrakter.felles.GeneriskId
+import no.nav.dagpenger.kontrakter.felles.GeneriskIdSomString
+import no.nav.dagpenger.kontrakter.felles.GeneriskIdSomUUID
 import no.nav.dagpenger.kontrakter.felles.Personident
 import java.time.LocalDateTime
 
 data class IverksettDto(
-    @Schema(required = true, description = "SakId skal enten være en UUID eller en string med maks 20 tegn")
+    @Schema(required = true, oneOf = [GeneriskIdSomUUID::class, GeneriskIdSomString::class])
     val sakId: GeneriskId,
-    @Schema(required = true, description = "BehandlingId skal enten være en UUID eller en string med maks 20 tegn")
+    @Schema(required = true, oneOf = [GeneriskIdSomUUID::class, GeneriskIdSomString::class])
     val behandlingId: GeneriskId,
     @Schema(required = true, description = "Fødselsnummer eller D-nummer", example = "15507600333", type = "string")
     val personident: Personident,
@@ -60,5 +62,6 @@ enum class IverksettStatus {
 }
 
 data class ForrigeIverksettingDto(
+    @Schema(required = true, oneOf = [GeneriskIdSomUUID::class, GeneriskIdSomString::class])
     val behandlingId: GeneriskId,
 )
