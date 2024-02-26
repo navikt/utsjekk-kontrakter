@@ -1,7 +1,6 @@
 package no.nav.dagpenger.kontrakter.oppdrag
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-import no.nav.dagpenger.kontrakter.felles.BrukersNavKontor
 import no.nav.dagpenger.kontrakter.felles.Fagsystem
 import no.nav.dagpenger.kontrakter.felles.GeneriskId
 import no.nav.dagpenger.kontrakter.felles.Satstype
@@ -19,7 +18,7 @@ data class Utbetalingsoppdrag(
     val saksbehandlerId: String,
     val avstemmingstidspunkt: LocalDateTime = LocalDateTime.now(),
     val utbetalingsperiode: List<Utbetalingsperiode>,
-    val brukersNavKontor: BrukersNavKontor? = null,
+    val brukersNavKontor: String? = null,
 ) {
     enum class KodeEndring {
         NY,
