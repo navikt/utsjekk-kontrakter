@@ -10,7 +10,7 @@ import java.time.LocalDateTime
 
 @Suppress("unused")
 data class Utbetalingsoppdrag(
-    val kodeEndring: KodeEndring,
+    val erFørsteUtbetalingPåSak: Boolean,
     val fagsystem: Fagsystem,
     val saksnummer: GeneriskId,
     val iverksettingId: String?,
@@ -19,13 +19,7 @@ data class Utbetalingsoppdrag(
     val avstemmingstidspunkt: LocalDateTime = LocalDateTime.now(),
     val utbetalingsperiode: List<Utbetalingsperiode>,
     val brukersNavKontor: String? = null,
-) {
-    enum class KodeEndring {
-        NY,
-        ENDR,
-        UEND,
-    }
-}
+)
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Utbetalingsperiode(
