@@ -39,11 +39,3 @@ data class Utbetalingsperiode(
 )
 
 data class Opphør(val fom: LocalDate)
-
-@Suppress("unused")
-enum class Utbetalingstype(val kode: String) {
-    DAGPENGER_ARBEIDSSØKER_ORDINÆR("DPORAS"),
-    DAGPENGER_PERMITTERING_ORDINÆR("DPPEAS"),
-    DAGPENGER_PERMITTERING_FISKEINDUSTRI("DPPEFI"),
-    DAGPENGER_EØS("DPDPASISP1"),
-}
