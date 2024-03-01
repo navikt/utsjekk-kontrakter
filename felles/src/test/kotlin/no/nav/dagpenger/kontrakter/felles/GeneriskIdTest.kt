@@ -8,9 +8,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
 
-
 class GeneriskIdTest {
-
     @Test
     fun `skal kaste feil hvis id som string er tom`() {
         assertThrows<IllegalArgumentException> { GeneriskIdSomString("") }
@@ -68,5 +66,14 @@ class GeneriskIdTest {
         assertNotNull(generiskId)
         assertTrue(generiskId is GeneriskIdSomString)
         assertEquals(id.id, generiskId.somString)
+    }
+
+    @Test
+    fun `toString returnerer kun verdien av id`() {
+        assertEquals("1234", GeneriskIdSomString("1234").toString())
+
+        UUID.randomUUID().also {
+            assertEquals(it.toString(), GeneriskIdSomUUID(it).toString())
+        }
     }
 }
