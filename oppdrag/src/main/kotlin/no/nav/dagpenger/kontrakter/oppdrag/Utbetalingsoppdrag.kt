@@ -16,6 +16,7 @@ data class Utbetalingsoppdrag(
     val iverksettingId: String?,
     val aktør: String,
     val saksbehandlerId: String,
+    val beslutterId: String? = null,
     val avstemmingstidspunkt: LocalDateTime = LocalDateTime.now(),
     val utbetalingsperiode: List<Utbetalingsperiode>,
     val brukersNavKontor: String? = null,
