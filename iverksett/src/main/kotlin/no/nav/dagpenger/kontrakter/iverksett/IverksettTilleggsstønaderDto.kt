@@ -1,15 +1,17 @@
 package no.nav.dagpenger.kontrakter.iverksett
 
 import io.swagger.v3.oas.annotations.media.Schema
-import no.nav.dagpenger.kontrakter.felles.GeneriskId
+import no.nav.dagpenger.kontrakter.felles.GyldigStringId
 import no.nav.dagpenger.kontrakter.felles.Personident
 import java.time.LocalDateTime
 
 data class IverksettTilleggsstønaderDto(
+    @GyldigStringId
     @Schema(required = true)
-    val sakId: GeneriskId,
+    val sakId: String,
+    @GyldigStringId
     @Schema(required = true)
-    val behandlingId: GeneriskId,
+    val behandlingId: String,
     val iverksettingId: String?,
     @Schema(required = true, description = "Fødselsnummer eller D-nummer", example = "15507600333", type = "string")
     val personident: Personident,
@@ -17,7 +19,12 @@ data class IverksettTilleggsstønaderDto(
     val vedtak: VedtaksdetaljerTilleggsstønaderDto,
     @Schema(description = "Må være satt hvis det ikke er første iverksetting på saken")
     val forrigeIverksetting: ForrigeIverksettingTilleggsstønaderDto? = null,
-)
+) {
+    init {
+        GyldigStringId.validate(sakId)
+        GyldigStringId.validate(behandlingId)
+    }
+}
 
 data class VedtaksdetaljerTilleggsstønaderDto(
     @Schema(required = true)
@@ -41,7 +48,12 @@ data class VedtaksdetaljerTilleggsstønaderDto(
 )
 
 data class ForrigeIverksettingTilleggsstønaderDto(
+    @GyldigStringId
     @Schema(required = true)
-    val behandlingId: GeneriskId,
+    val behandlingId: String,
     val iverksettingId: String? = null,
-)
+) {
+    init {
+        GyldigStringId.validate(behandlingId)
+    }
+}

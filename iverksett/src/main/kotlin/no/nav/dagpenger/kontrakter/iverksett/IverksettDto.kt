@@ -2,17 +2,17 @@ package no.nav.dagpenger.kontrakter.iverksett
 
 import io.swagger.v3.oas.annotations.media.Schema
 import no.nav.dagpenger.kontrakter.felles.BrukersNavKontor
-import no.nav.dagpenger.kontrakter.felles.GeneriskId
-import no.nav.dagpenger.kontrakter.felles.GeneriskIdSomString
-import no.nav.dagpenger.kontrakter.felles.GeneriskIdSomUUID
+import no.nav.dagpenger.kontrakter.felles.GyldigStringId
 import no.nav.dagpenger.kontrakter.felles.Personident
 import java.time.LocalDateTime
 
 data class IverksettDto(
-    @Schema(required = true, oneOf = [GeneriskIdSomUUID::class, GeneriskIdSomString::class])
-    val sakId: GeneriskId,
-    @Schema(required = true, oneOf = [GeneriskIdSomUUID::class, GeneriskIdSomString::class])
-    val behandlingId: GeneriskId,
+    @GyldigStringId
+    @Schema(required = true)
+    val sakId: String,
+    @GyldigStringId
+    @Schema(required = true)
+    val behandlingId: String,
     @Schema(required = true, description = "Fødselsnummer eller D-nummer", example = "15507600333", type = "string")
     val personident: Personident,
     @Schema(description = "Må være satt for utbetalingsvedtak")
@@ -24,7 +24,12 @@ data class IverksettDto(
         ),
     @Schema(description = "Må være satt hvis det ikke er første iverksetting på saken")
     val forrigeIverksetting: ForrigeIverksettingDto? = null,
-)
+) {
+    init {
+        GyldigStringId.validate(sakId)
+        GyldigStringId.validate(behandlingId)
+    }
+}
 
 data class VedtaksdetaljerDto(
     @Schema(required = true)
@@ -62,6 +67,10 @@ enum class IverksettStatus {
 }
 
 data class ForrigeIverksettingDto(
-    @Schema(required = true, oneOf = [GeneriskIdSomUUID::class, GeneriskIdSomString::class])
-    val behandlingId: GeneriskId,
-)
+    @GyldigStringId
+    val behandlingId: String,
+) {
+    init {
+        GyldigStringId.validate(behandlingId)
+    }
+}

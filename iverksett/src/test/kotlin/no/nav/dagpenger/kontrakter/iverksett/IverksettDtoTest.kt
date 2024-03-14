@@ -1,8 +1,6 @@
 package no.nav.dagpenger.kontrakter.iverksett
 
 import com.fasterxml.jackson.module.kotlin.readValue
-import no.nav.dagpenger.kontrakter.felles.GeneriskIdSomString
-import no.nav.dagpenger.kontrakter.felles.GeneriskIdSomUUID
 import no.nav.dagpenger.kontrakter.felles.Personident
 import no.nav.dagpenger.kontrakter.felles.StønadType
 import no.nav.dagpenger.kontrakter.felles.StønadTypeDagpenger
@@ -12,20 +10,19 @@ import org.intellij.lang.annotations.Language
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
-import java.util.UUID
 
 class IverksettDtoTest {
     @Test
     fun `tillater ikke tomme saksreferanser`() {
         assertThrows<IllegalArgumentException> {
-            enIverksettDto(saksreferanse = "")
+            objectMapper.readValue<IverksettDto>(objectMapper.writeValueAsString(enIverksettDto(saksreferanse = "")))
         }
     }
 
     @Test
     fun `tillater ikke saksreferanser over 20 tegn`() {
         assertThrows<IllegalArgumentException> {
-            enIverksettDto(saksreferanse = "aaaaaaaaaaaaaaaaaaaaa")
+            objectMapper.readValue<IverksettDto>(objectMapper.writeValueAsString(enIverksettDto(saksreferanse = "aaaaaaaaaaaaaaaaaaaaa")))
         }
     }
 
@@ -48,8 +45,8 @@ class IverksettDtoTest {
 
     private fun enIverksettDto(saksreferanse: String = "S-123456") =
         IverksettDto(
-            sakId = GeneriskIdSomString(saksreferanse),
-            behandlingId = GeneriskIdSomUUID(UUID.randomUUID()),
+            sakId = saksreferanse,
+            behandlingId = "AOSCOBo1u12dOASUCNB",
             personident = Personident("15507600333"),
         )
 
@@ -57,8 +54,8 @@ class IverksettDtoTest {
     private fun json(stønadType: StønadType) =
         """
         {
-          "sakId": "234bed7c-b1d3-11eb-9999-0242ac130003",
-          "behandlingId": "234bed7c-b1d3-11eb-8529-0242ac130003",
+          "sakId": "1234",
+          "behandlingId": "1",
           "personident": "15507600333",
           "vedtak": {
             "vedtakstype": "RAMMEVEDTAK",

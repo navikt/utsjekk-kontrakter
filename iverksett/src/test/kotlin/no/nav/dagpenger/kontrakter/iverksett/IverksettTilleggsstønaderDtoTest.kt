@@ -96,8 +96,8 @@ class IverksettTilleggsstønaderDtoTest {
         tom: LocalDate = LocalDate.of(2021, 5, 31),
     ) = """
         {
-          "sakId": "234bed7c-b1d3-11eb-9999-0242ac130003",
-          "behandlingId": "234bed7c-b1d3-11eb-8529-0242ac130003",
+          "sakId": "ASDNOUDBOWQD12",
+          "behandlingId": "1",
           "personident": "15507600333",
           "vedtak": {
             "vedtakstidspunkt": "2021-05-10T01:00:00",
