@@ -2,6 +2,8 @@ package no.nav.dagpenger.kontrakter.oppdrag
 
 import no.nav.dagpenger.kontrakter.felles.Fagsystem
 import no.nav.dagpenger.kontrakter.felles.GyldigStringId
+import no.nav.dagpenger.kontrakter.felles.validerBehandlingId
+import no.nav.dagpenger.kontrakter.felles.validerSakId
 
 @Suppress("unused")
 data class OppdragIdDto(
@@ -13,8 +15,8 @@ data class OppdragIdDto(
     val iverksettingId: String?,
 ) {
     init {
-        GyldigStringId.validate(sakId)
-        GyldigStringId.validate(behandlingId)
+        validerSakId(sakId)
+        validerBehandlingId(behandlingId)
     }
 
     override fun toString(): String =

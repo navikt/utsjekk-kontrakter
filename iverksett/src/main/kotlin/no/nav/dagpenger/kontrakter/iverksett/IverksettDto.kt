@@ -3,15 +3,26 @@ package no.nav.dagpenger.kontrakter.iverksett
 import io.swagger.v3.oas.annotations.media.Schema
 import no.nav.dagpenger.kontrakter.felles.BrukersNavKontor
 import no.nav.dagpenger.kontrakter.felles.GyldigStringId
+import no.nav.dagpenger.kontrakter.felles.Makslengde
 import no.nav.dagpenger.kontrakter.felles.Personident
+import no.nav.dagpenger.kontrakter.felles.validerBehandlingId
+import no.nav.dagpenger.kontrakter.felles.validerSakId
 import java.time.LocalDateTime
 
 data class IverksettDto(
     @GyldigStringId
-    @Schema(required = true)
+    @Schema(
+        required = true,
+        minLength = 1,
+        maxLength = Makslengde.SAK_ID,
+    )
     val sakId: String,
     @GyldigStringId
-    @Schema(required = true)
+    @Schema(
+        required = true,
+        minLength = 1,
+        maxLength = Makslengde.BEHANDLING_ID,
+    )
     val behandlingId: String,
     @Schema(required = true, description = "Fødselsnummer eller D-nummer", example = "15507600333", type = "string")
     val personident: Personident,
@@ -26,8 +37,8 @@ data class IverksettDto(
     val forrigeIverksetting: ForrigeIverksettingDto? = null,
 ) {
     init {
-        GyldigStringId.validate(sakId)
-        GyldigStringId.validate(behandlingId)
+        validerSakId(sakId)
+        validerBehandlingId(behandlingId)
     }
 }
 
@@ -71,6 +82,6 @@ data class ForrigeIverksettingDto(
     val behandlingId: String,
 ) {
     init {
-        GyldigStringId.validate(behandlingId)
+        validerBehandlingId(behandlingId)
     }
 }

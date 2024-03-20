@@ -3,6 +3,8 @@ package no.nav.dagpenger.kontrakter.iverksett
 import io.swagger.v3.oas.annotations.media.Schema
 import no.nav.dagpenger.kontrakter.felles.GyldigStringId
 import no.nav.dagpenger.kontrakter.felles.Personident
+import no.nav.dagpenger.kontrakter.felles.validerBehandlingId
+import no.nav.dagpenger.kontrakter.felles.validerSakId
 import java.time.LocalDateTime
 
 data class IverksettTilleggsstønaderDto(
@@ -21,8 +23,8 @@ data class IverksettTilleggsstønaderDto(
     val forrigeIverksetting: ForrigeIverksettingTilleggsstønaderDto? = null,
 ) {
     init {
-        GyldigStringId.validate(sakId)
-        GyldigStringId.validate(behandlingId)
+        validerSakId(sakId)
+        validerBehandlingId(behandlingId)
     }
 }
 
@@ -54,6 +56,6 @@ data class ForrigeIverksettingTilleggsstønaderDto(
     val iverksettingId: String? = null,
 ) {
     init {
-        GyldigStringId.validate(behandlingId)
+        validerBehandlingId(behandlingId)
     }
 }
