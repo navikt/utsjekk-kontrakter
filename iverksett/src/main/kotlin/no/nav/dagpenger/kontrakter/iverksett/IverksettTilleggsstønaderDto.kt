@@ -1,16 +1,15 @@
 package no.nav.dagpenger.kontrakter.iverksett
 
 import io.swagger.v3.oas.annotations.media.Schema
-import no.nav.dagpenger.kontrakter.felles.GyldigStringId
+import no.nav.dagpenger.kontrakter.felles.GyldigBehandlingId
+import no.nav.dagpenger.kontrakter.felles.GyldigSakId
 import no.nav.dagpenger.kontrakter.felles.Personident
 import java.time.LocalDateTime
 
 data class IverksettTilleggsstønaderDto(
-    @GyldigStringId
-    @Schema(required = true)
+    @GyldigSakId
     val sakId: String,
-    @GyldigStringId
-    @Schema(required = true)
+    @GyldigBehandlingId
     val behandlingId: String,
     val iverksettingId: String?,
     @Schema(required = true, description = "Fødselsnummer eller D-nummer", example = "15507600333", type = "string")
@@ -21,8 +20,8 @@ data class IverksettTilleggsstønaderDto(
     val forrigeIverksetting: ForrigeIverksettingTilleggsstønaderDto? = null,
 ) {
     init {
-        GyldigStringId.validate(sakId)
-        GyldigStringId.validate(behandlingId)
+        GyldigSakId.valider(sakId)
+        GyldigBehandlingId.valider(behandlingId)
     }
 }
 
@@ -48,12 +47,11 @@ data class VedtaksdetaljerTilleggsstønaderDto(
 )
 
 data class ForrigeIverksettingTilleggsstønaderDto(
-    @GyldigStringId
-    @Schema(required = true)
+    @GyldigBehandlingId
     val behandlingId: String,
     val iverksettingId: String? = null,
 ) {
     init {
-        GyldigStringId.validate(behandlingId)
+        GyldigBehandlingId.valider(behandlingId)
     }
 }

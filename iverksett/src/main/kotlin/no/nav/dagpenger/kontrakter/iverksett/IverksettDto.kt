@@ -2,16 +2,15 @@ package no.nav.dagpenger.kontrakter.iverksett
 
 import io.swagger.v3.oas.annotations.media.Schema
 import no.nav.dagpenger.kontrakter.felles.BrukersNavKontor
-import no.nav.dagpenger.kontrakter.felles.GyldigStringId
+import no.nav.dagpenger.kontrakter.felles.GyldigBehandlingId
+import no.nav.dagpenger.kontrakter.felles.GyldigSakId
 import no.nav.dagpenger.kontrakter.felles.Personident
 import java.time.LocalDateTime
 
 data class IverksettDto(
-    @GyldigStringId
-    @Schema(required = true)
+    @GyldigSakId
     val sakId: String,
-    @GyldigStringId
-    @Schema(required = true)
+    @GyldigBehandlingId
     val behandlingId: String,
     @Schema(required = true, description = "Fødselsnummer eller D-nummer", example = "15507600333", type = "string")
     val personident: Personident,
@@ -26,8 +25,8 @@ data class IverksettDto(
     val forrigeIverksetting: ForrigeIverksettingDto? = null,
 ) {
     init {
-        GyldigStringId.validate(sakId)
-        GyldigStringId.validate(behandlingId)
+        GyldigSakId.valider(sakId)
+        GyldigBehandlingId.valider(behandlingId)
     }
 }
 
@@ -67,10 +66,10 @@ enum class IverksettStatus {
 }
 
 data class ForrigeIverksettingDto(
-    @GyldigStringId
+    @GyldigBehandlingId
     val behandlingId: String,
 ) {
     init {
-        GyldigStringId.validate(behandlingId)
+        GyldigBehandlingId.valider(behandlingId)
     }
 }

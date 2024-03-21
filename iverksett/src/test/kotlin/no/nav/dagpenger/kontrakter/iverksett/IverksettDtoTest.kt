@@ -13,16 +13,16 @@ import org.junit.jupiter.api.assertThrows
 
 class IverksettDtoTest {
     @Test
-    fun `tillater ikke tomme saksreferanser`() {
+    fun `tillater ikke tom sakId`() {
         assertThrows<IllegalArgumentException> {
-            objectMapper.readValue<IverksettDto>(objectMapper.writeValueAsString(enIverksettDto(saksreferanse = "")))
+            objectMapper.readValue<IverksettDto>(objectMapper.writeValueAsString(enIverksettDto(sakId = "")))
         }
     }
 
     @Test
-    fun `tillater ikke saksreferanser over 20 tegn`() {
+    fun `tillater ikke sakId over 25 tegn`() {
         assertThrows<IllegalArgumentException> {
-            objectMapper.readValue<IverksettDto>(objectMapper.writeValueAsString(enIverksettDto(saksreferanse = "aaaaaaaaaaaaaaaaaaaaa")))
+            objectMapper.readValue<IverksettDto>(objectMapper.writeValueAsString(enIverksettDto(sakId = "aaaaaaaaaaaaaaaaaaaaaaaaaaa")))
         }
     }
 
@@ -43,9 +43,9 @@ class IverksettDtoTest {
         assertDoesNotThrow { objectMapper.readValue<IverksettDto>(json(StønadTypeTiltakspenger.JOBBKLUBB)) }
     }
 
-    private fun enIverksettDto(saksreferanse: String = "S-123456") =
+    private fun enIverksettDto(sakId: String = "S-123456") =
         IverksettDto(
-            sakId = saksreferanse,
+            sakId = sakId,
             behandlingId = "AOSCOBo1u12dOASUCNB",
             personident = Personident("15507600333"),
         )

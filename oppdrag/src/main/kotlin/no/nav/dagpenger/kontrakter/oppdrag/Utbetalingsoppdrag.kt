@@ -2,7 +2,8 @@ package no.nav.dagpenger.kontrakter.oppdrag
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import no.nav.dagpenger.kontrakter.felles.Fagsystem
-import no.nav.dagpenger.kontrakter.felles.GyldigStringId
+import no.nav.dagpenger.kontrakter.felles.GyldigBehandlingId
+import no.nav.dagpenger.kontrakter.felles.GyldigSakId
 import no.nav.dagpenger.kontrakter.felles.Satstype
 import java.math.BigDecimal
 import java.time.LocalDate
@@ -12,7 +13,7 @@ import java.time.LocalDateTime
 data class Utbetalingsoppdrag(
     val erFørsteUtbetalingPåSak: Boolean,
     val fagsystem: Fagsystem,
-    @GyldigStringId
+    @GyldigSakId
     val saksnummer: String,
     val iverksettingId: String?,
     val aktør: String,
@@ -23,7 +24,7 @@ data class Utbetalingsoppdrag(
     val brukersNavKontor: String? = null,
 ) {
     init {
-        GyldigStringId.validate(saksnummer)
+        GyldigSakId.valider(saksnummer)
     }
 }
 
@@ -40,12 +41,12 @@ data class Utbetalingsperiode(
     val sats: BigDecimal,
     val satstype: Satstype,
     val utbetalesTil: String,
-    @GyldigStringId
+    @GyldigBehandlingId
     val behandlingId: String,
     val utbetalingsgrad: Int? = null,
 ) {
     init {
-        GyldigStringId.validate(behandlingId)
+        GyldigBehandlingId.valider(behandlingId)
     }
 }
 
