@@ -2,7 +2,7 @@
 Kontrakter for tjenesten utsjekk. 
 
 ## Ta i bruk kontraktene
-Kontraktene publiseres som pakker i Github Package Registry. Hvis applikasjonen din bruker disse pakkene, må du
+Kontraktene publiseres som pakker i Github Package Registry (GPR). Hvis applikasjonen din bruker disse pakkene, må du
 enten autentisere deg for å laste dem ned eller bruke NAV sitt mirror-repository. 
 
 ### Med NAV-mirror
@@ -20,7 +20,7 @@ repositories {
 }
 ```
 
-Dersom du ikke bruker NAV-mirroret, må du autentisere deg for å hente ned pakken fra GCR. For å autentisere deg må du ha et Personal Access Token (PAT) med scope read:packages.
+Dersom du ikke bruker NAV-mirroret, må du autentisere deg for å hente ned pakken fra GPR. For å autentisere deg må du ha et Personal Access Token (PAT) med scope read:packages.
 Følg Github sin [guide](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) for å opprette et PAT hvis du ikke allerede har et. Husk å enable SSO for tokenet.
 Under følger lokalt oppsett for hhv. Gradle og Maven:
 ### Gradle
