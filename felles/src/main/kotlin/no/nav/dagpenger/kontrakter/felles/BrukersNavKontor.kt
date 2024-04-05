@@ -1,4 +1,4 @@
-package no.nav.dagpenger.kontrakter.felles
+package no.nav.utsjekk.kontrakter.felles
 
 import io.swagger.v3.oas.annotations.media.Schema
 import java.time.LocalDate

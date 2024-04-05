@@ -1,11 +1,11 @@
-package no.nav.dagpenger.kontrakter.iverksett
+package no.nav.utsjekk.kontrakter.iverksett
 
 import com.fasterxml.jackson.module.kotlin.readValue
-import no.nav.dagpenger.kontrakter.felles.Personident
-import no.nav.dagpenger.kontrakter.felles.StønadType
-import no.nav.dagpenger.kontrakter.felles.StønadTypeDagpenger
-import no.nav.dagpenger.kontrakter.felles.StønadTypeTiltakspenger
-import no.nav.dagpenger.kontrakter.felles.objectMapper
+import no.nav.utsjekk.kontrakter.felles.Personident
+import no.nav.utsjekk.kontrakter.felles.StønadType
+import no.nav.utsjekk.kontrakter.felles.StønadTypeDagpenger
+import no.nav.utsjekk.kontrakter.felles.StønadTypeTiltakspenger
+import no.nav.utsjekk.kontrakter.felles.objectMapper
 import org.intellij.lang.annotations.Language
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow

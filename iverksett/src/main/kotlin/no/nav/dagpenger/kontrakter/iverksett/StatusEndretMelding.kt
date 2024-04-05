@@ -1,6 +1,6 @@
-package no.nav.dagpenger.kontrakter.iverksett
+package no.nav.utsjekk.kontrakter.iverksett
 
-import no.nav.dagpenger.kontrakter.felles.Fagsystem
+import no.nav.utsjekk.kontrakter.felles.Fagsystem
 
 @Suppress("unused")
 data class StatusEndretMelding(

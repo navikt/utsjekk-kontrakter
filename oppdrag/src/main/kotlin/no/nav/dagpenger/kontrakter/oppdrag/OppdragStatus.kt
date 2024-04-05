@@ -1,4 +1,4 @@
-package no.nav.dagpenger.kontrakter.oppdrag
+package no.nav.utsjekk.kontrakter.oppdrag
 
 @Suppress("unused")
 data class OppdragStatusDto(

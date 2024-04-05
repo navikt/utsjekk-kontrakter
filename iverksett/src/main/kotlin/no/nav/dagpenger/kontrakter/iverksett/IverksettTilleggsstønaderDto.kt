@@ -1,9 +1,9 @@
-package no.nav.dagpenger.kontrakter.iverksett
+package no.nav.utsjekk.kontrakter.iverksett
 
 import io.swagger.v3.oas.annotations.media.Schema
-import no.nav.dagpenger.kontrakter.felles.GyldigBehandlingId
-import no.nav.dagpenger.kontrakter.felles.GyldigSakId
-import no.nav.dagpenger.kontrakter.felles.Personident
+import no.nav.utsjekk.kontrakter.felles.GyldigBehandlingId
+import no.nav.utsjekk.kontrakter.felles.GyldigSakId
+import no.nav.utsjekk.kontrakter.felles.Personident
 import java.time.LocalDateTime
 
 data class IverksettTilleggsstønaderDto(

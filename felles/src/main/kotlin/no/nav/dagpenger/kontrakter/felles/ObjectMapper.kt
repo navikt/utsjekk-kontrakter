@@ -1,4 +1,4 @@
-package no.nav.dagpenger.kontrakter.felles
+package no.nav.utsjekk.kontrakter.felles
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect
 import com.fasterxml.jackson.annotation.PropertyAccessor

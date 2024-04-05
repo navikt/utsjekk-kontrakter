@@ -1,10 +1,10 @@
-package no.nav.dagpenger.kontrakter.iverksett
+package no.nav.utsjekk.kontrakter.iverksett
 
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.databind.JsonNode
-import no.nav.dagpenger.kontrakter.felles.StønadType
-import no.nav.dagpenger.kontrakter.felles.StønadTypeDagpenger
-import no.nav.dagpenger.kontrakter.felles.StønadTypeTiltakspenger
+import no.nav.utsjekk.kontrakter.felles.StønadType
+import no.nav.utsjekk.kontrakter.felles.StønadTypeDagpenger
+import no.nav.utsjekk.kontrakter.felles.StønadTypeTiltakspenger
 
 enum class Ferietillegg {
     ORDINÆR,

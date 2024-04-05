@@ -1,10 +1,10 @@
-package no.nav.dagpenger.kontrakter.oppdrag
+package no.nav.utsjekk.kontrakter.oppdrag
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-import no.nav.dagpenger.kontrakter.felles.Fagsystem
-import no.nav.dagpenger.kontrakter.felles.GyldigBehandlingId
-import no.nav.dagpenger.kontrakter.felles.GyldigSakId
-import no.nav.dagpenger.kontrakter.felles.Satstype
+import no.nav.utsjekk.kontrakter.felles.Fagsystem
+import no.nav.utsjekk.kontrakter.felles.GyldigBehandlingId
+import no.nav.utsjekk.kontrakter.felles.GyldigSakId
+import no.nav.utsjekk.kontrakter.felles.Satstype
 import java.math.BigDecimal
 import java.time.LocalDate
 import java.time.LocalDateTime

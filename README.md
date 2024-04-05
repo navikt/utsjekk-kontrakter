@@ -1,5 +1,5 @@
-# dp-kontrakter
-Dagpenger sine kontrakter i form av dto'er brukt på tvers av apper/tjenester
+# utsjekk-kontrakter
+Kontrakter for tjenesten utsjekk. 
 
 ## Ta i bruk kontraktene
 Kontraktene publiseres som pakker i Github Package Registry. Hvis applikasjonen din bruker disse pakkene, må du
@@ -19,7 +19,7 @@ repositories {
             username = githubUser
             password = githubPassword
         }
-        setUrl("https://maven.pkg.github.com/navikt/dp-kontrakter")
+        setUrl("https://maven.pkg.github.com/navikt/utsjekk-kontrakter")
     }
 }
 ```
@@ -62,7 +62,7 @@ Videre må følgende kodesnutt legges inn i applikasjonens pom.xml:
     ...
     <repository>
         <id>github</id>
-        <url>https://maven.pkg.github.com/navikt/dp-kontrakter</url>
+        <url>https://maven.pkg.github.com/navikt/utsjekk-kontrakter</url>
     </repository>
     ...
 </repositories>

@@ -1,4 +1,4 @@
-package no.nav.dagpenger.kontrakter.felles
+package no.nav.utsjekk.kontrakter.felles
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow

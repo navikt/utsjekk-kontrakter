@@ -1,10 +1,10 @@
-package no.nav.dagpenger.kontrakter.iverksett
+package no.nav.utsjekk.kontrakter.iverksett
 
 import com.fasterxml.jackson.databind.exc.ValueInstantiationException
 import com.fasterxml.jackson.module.kotlin.readValue
-import no.nav.dagpenger.kontrakter.felles.Satstype
-import no.nav.dagpenger.kontrakter.felles.StønadTypeTilleggsstønader
-import no.nav.dagpenger.kontrakter.felles.objectMapper
+import no.nav.utsjekk.kontrakter.felles.Satstype
+import no.nav.utsjekk.kontrakter.felles.StønadTypeTilleggsstønader
+import no.nav.utsjekk.kontrakter.felles.objectMapper
 import org.intellij.lang.annotations.Language
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow

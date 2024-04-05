@@ -1,6 +1,6 @@
-package no.nav.dagpenger.kontrakter.oppdrag
+package no.nav.utsjekk.kontrakter.oppdrag
 
-import no.nav.dagpenger.kontrakter.felles.Fagsystem
+import no.nav.utsjekk.kontrakter.felles.Fagsystem
 import java.time.LocalDateTime
 
 

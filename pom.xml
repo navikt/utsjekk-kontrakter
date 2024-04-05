@@ -3,12 +3,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>no.nav.dagpenger.kontrakter</groupId>
-    <artifactId>dp-kontrakter</artifactId>
+    <groupId>no.nav.utsjekk.kontrakter</groupId>
+    <artifactId>utsjekk-kontrakter</artifactId>
     <version>${revision}${sha1}${changelist}</version>
     <packaging>pom</packaging>
 
-    <name>Dagpenger - kontrakter</name>
+    <name>Utsjekk - kontrakter</name>
 
     <modules>
         <module>iverksett</module>
@@ -20,7 +20,7 @@
         <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <revision>2.0</revision>
+        <revision>1.0</revision>
         <sha1/>
         <changelist>-SNAPSHOT</changelist>
         <kotlin.version>1.8.10</kotlin.version>
@@ -32,7 +32,7 @@
         <repository>
             <id>github</id>
             <name>GitHub navikt Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/navikt/dp-kontrakter</url>
+            <url>https://maven.pkg.github.com/navikt/utsjekk-kontrakter</url>
         </repository>
     </distributionManagement>
 

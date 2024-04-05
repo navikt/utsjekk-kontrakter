@@ -1,4 +1,4 @@
-package no.nav.dagpenger.kontrakter.iverksett
+package no.nav.utsjekk.kontrakter.iverksett
 
 import io.swagger.v3.oas.annotations.media.Schema
 import java.time.LocalDate
