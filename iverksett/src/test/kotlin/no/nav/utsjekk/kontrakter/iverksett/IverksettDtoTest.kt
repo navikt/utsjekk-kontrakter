@@ -9,22 +9,8 @@ import no.nav.utsjekk.kontrakter.felles.objectMapper
 import org.intellij.lang.annotations.Language
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
-import org.junit.jupiter.api.assertThrows
 
 class IverksettDtoTest {
-    @Test
-    fun `tillater ikke tom sakId`() {
-        assertThrows<IllegalArgumentException> {
-            objectMapper.readValue<IverksettDto>(objectMapper.writeValueAsString(enIverksettDto(sakId = "")))
-        }
-    }
-
-    @Test
-    fun `tillater ikke sakId over 25 tegn`() {
-        assertThrows<IllegalArgumentException> {
-            objectMapper.readValue<IverksettDto>(objectMapper.writeValueAsString(enIverksettDto(sakId = "aaaaaaaaaaaaaaaaaaaaaaaaaaa")))
-        }
-    }
 
     @Test
     fun `serialiserer og deserialiserer`() {

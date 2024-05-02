@@ -7,9 +7,21 @@ import no.nav.utsjekk.kontrakter.felles.Personident
 import java.time.LocalDateTime
 
 data class IverksettTilleggsstønaderDto(
-    @GyldigSakId
+    @Schema(
+        required = true,
+        minLength = 1,
+        maxLength = GyldigSakId.MAKSLENGDE,
+        description = GyldigSakId.BESKRIVELSE,
+        type = "String",
+    )
     val sakId: String,
-    @GyldigBehandlingId
+    @Schema(
+        required = true,
+        minLength = 1,
+        maxLength = GyldigBehandlingId.MAKSLENGDE,
+        description = GyldigBehandlingId.BESKRIVELSE,
+        type = "String",
+    )
     val behandlingId: String,
     val iverksettingId: String?,
     @Schema(required = true, description = "Fødselsnummer eller D-nummer", example = "15507600333", type = "string")
@@ -18,12 +30,7 @@ data class IverksettTilleggsstønaderDto(
     val vedtak: VedtaksdetaljerTilleggsstønaderDto,
     @Schema(description = "Må være satt hvis det ikke er første iverksetting på saken")
     val forrigeIverksetting: ForrigeIverksettingTilleggsstønaderDto? = null,
-) {
-    init {
-        GyldigSakId.valider(sakId)
-        GyldigBehandlingId.valider(behandlingId)
-    }
-}
+)
 
 data class VedtaksdetaljerTilleggsstønaderDto(
     @Schema(required = true)
@@ -47,11 +54,13 @@ data class VedtaksdetaljerTilleggsstønaderDto(
 )
 
 data class ForrigeIverksettingTilleggsstønaderDto(
-    @GyldigBehandlingId
+    @Schema(
+        required = true,
+        minLength = 1,
+        maxLength = GyldigBehandlingId.MAKSLENGDE,
+        description = GyldigBehandlingId.BESKRIVELSE,
+        type = "String",
+    )
     val behandlingId: String,
     val iverksettingId: String? = null,
-) {
-    init {
-        GyldigBehandlingId.valider(behandlingId)
-    }
-}
+)
