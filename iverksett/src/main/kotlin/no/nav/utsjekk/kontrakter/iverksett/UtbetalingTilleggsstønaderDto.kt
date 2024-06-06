@@ -25,7 +25,6 @@ data class UtbetalingTilleggsstønaderDto(
     private fun validerSatstype() {
         when (satstype) {
             Satstype.MÅNEDLIG -> validerMånedssats()
-            Satstype.ENGANGS -> validerEngangssats()
             else -> return
         }
     }
@@ -33,12 +32,6 @@ data class UtbetalingTilleggsstønaderDto(
     private fun validerMånedssats() {
         require(fraOgMedDato.dayOfMonth == 1 && tilOgMedDato == sisteDagIMåneden) {
             "Utbetalinger med satstype ${satstype.name} må starte den første i måneden og slutte den siste i måneden"
-        }
-    }
-
-    private fun validerEngangssats() {
-        require(fraOgMedDato == tilOgMedDato) {
-            "Engangsutbetalinger må ha samme fom og tom"
         }
     }
 

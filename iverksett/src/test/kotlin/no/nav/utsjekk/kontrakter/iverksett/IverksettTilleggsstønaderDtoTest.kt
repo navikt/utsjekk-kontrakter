@@ -60,34 +60,6 @@ class IverksettTilleggsstønaderDtoTest {
         }
     }
 
-    @Test
-    fun `gyldig validering når engangssats har samme fom og tom`() {
-        val rawJson =
-            json(
-                satstype = Satstype.ENGANGS,
-                fom = LocalDate.of(2021, 5, 1),
-                tom = LocalDate.of(2021, 5, 1),
-            )
-
-        assertDoesNotThrow {
-            objectMapper.readValue<IverksettTilleggsstønaderDto>(rawJson)
-        }
-    }
-
-    @Test
-    fun `ugyldig validering når engangssats ikke har samme fom og tom`() {
-        val rawJson =
-            json(
-                satstype = Satstype.ENGANGS,
-                fom = LocalDate.of(2021, 5, 1),
-                tom = LocalDate.of(2021, 5, 2),
-            )
-
-        assertThrows<ValueInstantiationException> {
-            objectMapper.readValue<IverksettTilleggsstønaderDto>(rawJson)
-        }
-    }
-
     @Language("json")
     private fun json(
         stønadType: StønadTypeTilleggsstønader = StønadTypeTilleggsstønader.TILSYN_BARN_AAP,
