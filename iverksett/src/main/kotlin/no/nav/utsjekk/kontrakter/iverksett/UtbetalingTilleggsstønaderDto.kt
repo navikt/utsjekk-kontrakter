@@ -3,7 +3,7 @@ package no.nav.utsjekk.kontrakter.iverksett
 import io.swagger.v3.oas.annotations.media.Schema
 import no.nav.utsjekk.kontrakter.felles.BrukersNavKontor
 import no.nav.utsjekk.kontrakter.felles.Satstype
-import no.nav.utsjekk.kontrakter.felles.StønadTypeTilleggsstønader
+import no.nav.utsjekk.kontrakter.felles.StønadType
 import java.time.LocalDate
 import java.time.ZoneId
 import java.util.Calendar
@@ -15,7 +15,7 @@ data class UtbetalingTilleggsstønaderDto(
     val satstype: Satstype,
     val fraOgMedDato: LocalDate,
     val tilOgMedDato: LocalDate,
-    val stønadstype: StønadTypeTilleggsstønader,
+    val stønadstype: StønadType,
     val brukersNavKontor: BrukersNavKontor? = null,
 ) {
     init {
@@ -35,14 +35,15 @@ data class UtbetalingTilleggsstønaderDto(
         }
     }
 
-    private val sisteDagIMåneden get(): LocalDate {
-        val defaultZoneId = ZoneId.systemDefault()
-        val calendar =
-            Calendar.getInstance().apply {
-                time = Date.from(tilOgMedDato.atStartOfDay(defaultZoneId).toInstant())
-                set(Calendar.DAY_OF_MONTH, this.getActualMaximum(Calendar.DAY_OF_MONTH))
-            }
+    private val sisteDagIMåneden
+        get(): LocalDate {
+            val defaultZoneId = ZoneId.systemDefault()
+            val calendar =
+                Calendar.getInstance().apply {
+                    time = Date.from(tilOgMedDato.atStartOfDay(defaultZoneId).toInstant())
+                    set(Calendar.DAY_OF_MONTH, this.getActualMaximum(Calendar.DAY_OF_MONTH))
+                }
 
-        return LocalDate.ofInstant(calendar.toInstant(), defaultZoneId)
-    }
+            return LocalDate.ofInstant(calendar.toInstant(), defaultZoneId)
+        }
 }
