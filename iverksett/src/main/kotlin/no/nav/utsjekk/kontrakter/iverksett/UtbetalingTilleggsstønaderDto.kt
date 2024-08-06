@@ -3,7 +3,7 @@ package no.nav.utsjekk.kontrakter.iverksett
 import io.swagger.v3.oas.annotations.media.Schema
 import no.nav.utsjekk.kontrakter.felles.BrukersNavKontor
 import no.nav.utsjekk.kontrakter.felles.Satstype
-import no.nav.utsjekk.kontrakter.felles.StønadType
+import no.nav.utsjekk.kontrakter.felles.StønadTypeTilleggsstønader
 import java.time.LocalDate
 import java.time.ZoneId
 import java.util.Calendar
@@ -15,7 +15,7 @@ data class UtbetalingTilleggsstønaderDto(
     val satstype: Satstype,
     val fraOgMedDato: LocalDate,
     val tilOgMedDato: LocalDate,
-    val stønadstype: StønadType,
+    val stønadstype: StønadTypeTilleggsstønader,
     val brukersNavKontor: BrukersNavKontor? = null,
 ) {
     init {
