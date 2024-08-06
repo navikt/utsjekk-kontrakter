@@ -37,20 +37,18 @@ class IverksettDtoTest {
         )
 
     @Language("json")
-    private fun json(stønadType: StønadType) =
-        """
+    private fun json(stønadType: StønadType): String {
+        val brukersNavKontor = if (stønadType is StønadTypeTiltakspenger) "{ \"enhet\": \"4400\" }" else null
+        return """
         {
           "sakId": "1234",
           "behandlingId": "1",
           "personident": "15507600333",
           "vedtak": {
-            "vedtakstype": "RAMMEVEDTAK",
             "vedtakstidspunkt": "2021-05-10T01:00:00",
-            "resultat": "AVSLÅTT",
             "saksbehandlerId": "A123456",
             "beslutterId": "B123456",
-            "opphorAarsak": "PERIODE_UTLØPT",
-            "avslagAarsak": null,
+            "brukersNavKontor": $brukersNavKontor,
             "utbetalinger": [
               {
                 "belopPerDag": 10,
@@ -60,26 +58,10 @@ class IverksettDtoTest {
                   "stønadstype": "$stønadType"
                 }
               }
-            ],
-            "vedtaksperioder": [
-              {
-                "fraOgMedDato": "2021-06-01",
-                "tilOgMedDato": null,
-                "periodeType": "HOVEDPERIODE"
-              }
-            ],
-            "tilbakekreving": {
-              "tilbakekrevingsvalg": "OPPRETT_TILBAKEKREVING_MED_VARSEL",
-              "tilbakekrevingMedVarsel": {
-                "varseltekst": "varsel",
-                "sumFeilutbetaling": 1,
-                "fellesperioder": []
-              }
-            },
-            "brevmottakere": []
+            ]
           },
-          "utbetalingerPaaForrigeVedtak": [],
           "forrigeIverksetting": null
         }
         """.trimIndent()
+    }
 }
