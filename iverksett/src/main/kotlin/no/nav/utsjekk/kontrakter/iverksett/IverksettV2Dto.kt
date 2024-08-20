@@ -8,6 +8,12 @@ import no.nav.utsjekk.kontrakter.felles.Satstype
 import java.time.LocalDate
 import java.time.LocalDateTime
 
+/**
+ * Representerer en iverksetting.
+ * @property sakId Id på saken i saksbehandlingsløsningen
+ * @property behandlingId Id på behandlingen i saksbehandlingsløsningen
+ * @property iverksettingId Id som unikt identifiserer iverksettingen. Brukes når konsument må iverksette flere ganger for samme behandling
+ */
 data class IverksettV2Dto(
     @Schema(
         required = true,
