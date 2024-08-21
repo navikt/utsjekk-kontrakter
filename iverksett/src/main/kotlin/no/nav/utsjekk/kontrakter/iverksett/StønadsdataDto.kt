@@ -23,7 +23,6 @@ sealed class StønadsdataDto(open val stønadstype: StønadType) {
             listOf(
                 StønadsdataDagpengerDto::deserialiser,
                 StønadsdataTiltakspengerV2Dto::deserialiser,
-                StønadsdataTiltakspengerDto::deserialiser,
                 StønadsdataTilleggsstønaderDto::deserialiser
             )
                 .map { it(json) }
@@ -70,22 +69,6 @@ data class StønadsdataTiltakspengerV2Dto(
                 stønadstype = StønadTypeTiltakspenger.valueOf(json["stønadstype"].asText()),
                 barnetillegg = json["barnetillegg"]?.asBoolean() ?: false,
                 brukersNavKontor = json["brukersNavKontor"].asText(),
-            )
-        } catch (_: Exception) {
-            null
-        }
-    }
-}
-
-data class StønadsdataTiltakspengerDto(
-    override val stønadstype: StønadTypeTiltakspenger,
-    val barnetillegg: Boolean = false,
-) : StønadsdataDto(stønadstype) {
-    companion object {
-        fun deserialiser(json: JsonNode) = try {
-            StønadsdataTiltakspengerDto(
-                stønadstype = StønadTypeTiltakspenger.valueOf(json["stønadstype"].asText()),
-                barnetillegg = json["barnetillegg"]?.asBoolean() ?: false,
             )
         } catch (_: Exception) {
             null
