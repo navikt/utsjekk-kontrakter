@@ -12,6 +12,9 @@ enum class Ferietillegg {
     AVDØD,
 }
 
+/**
+ * Stønadsdata representerer ytelsesspesifikke data for utbetalingsperioden. Se subklasser for detaljer.
+ */
 sealed class StønadsdataDto(open val stønadstype: StønadType) {
     companion object {
         @JsonCreator
@@ -28,6 +31,10 @@ sealed class StønadsdataDto(open val stønadstype: StønadType) {
     }
 }
 
+/**
+ * @property stønadstype Stønadstypene for dagpenger representerer rettighetsgruppene Ordinær arbeidssøker, Permittert, Permittert fra fiskeindustri og EØS.
+ * @property ferietillegg Settes når utbetalingen er et ferietillegg.
+ */
 data class StønadsdataDagpengerDto(
     override val stønadstype: StønadTypeDagpenger,
     val ferietillegg: Ferietillegg? = null
@@ -47,6 +54,11 @@ data class StønadsdataDagpengerDto(
     }
 }
 
+/**
+ * @property stønadstype Stønadstypene for tiltakspenger representerer tiltakstypene.
+ * @property barnetillegg Settes når utbetalingsperioden gjelder et barnetillegg.
+ * @property brukersNavKontor Enhetsnummeret for NAV-kontoret som brukeren tilhører.
+ */
 data class StønadsdataTiltakspengerV2Dto(
     override val stønadstype: StønadTypeTiltakspenger,
     val barnetillegg: Boolean = false,
@@ -81,6 +93,11 @@ data class StønadsdataTiltakspengerDto(
     }
 }
 
+/**
+ * @property stønadstype Stønadstypene for tilleggsstønader representerer både hvilken stønad utbetalingen gjelder samt visse undergrupper
+ * for den enkelte stønad (hva disse representerer kan variere)
+ * @property brukersNavKontor Enhetsnummeret for NAV-kontoret som brukeren tilhører. Settes kun for stønadene som behandles i tiltaksenhetene (?).
+ */
 data class StønadsdataTilleggsstønaderDto(
     override val stønadstype: StønadTypeTilleggsstønader,
     val brukersNavKontor: String? = null,
