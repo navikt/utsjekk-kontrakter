@@ -79,7 +79,7 @@ data class StønadsdataTiltakspengerV2Dto(
 /**
  * @property stønadstype Stønadstypene for tilleggsstønader representerer både hvilken stønad utbetalingen gjelder samt visse undergrupper
  * for den enkelte stønad (hva disse representerer kan variere)
- * @property brukersNavKontor Enhetsnummeret for NAV-kontoret som brukeren tilhører. Settes kun for stønadene som behandles i tiltaksenhetene (?).
+ * @property brukersNavKontor Enhetsnummeret for NAV-kontoret som brukeren tilhører. Settes kun for reisestønadene.
  */
 data class StønadsdataTilleggsstønaderDto(
     override val stønadstype: StønadTypeTilleggsstønader,
@@ -89,7 +89,7 @@ data class StønadsdataTilleggsstønaderDto(
         fun deserialiser(json: JsonNode) = try {
             StønadsdataTilleggsstønaderDto(
                 stønadstype = StønadTypeTilleggsstønader.valueOf(json["stønadstype"].asText()),
-                brukersNavKontor = json["brukersNavKontor"]?.asText(),
+                brukersNavKontor = json["brukersNavKontor"]?.asText().takeIf { it != null && it != "null" },
             )
         } catch (_: Exception) {
             null

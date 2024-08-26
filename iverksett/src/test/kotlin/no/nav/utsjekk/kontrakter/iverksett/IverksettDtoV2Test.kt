@@ -9,6 +9,8 @@ import no.nav.utsjekk.kontrakter.felles.StønadTypeTiltakspenger
 import no.nav.utsjekk.kontrakter.felles.objectMapper
 import org.intellij.lang.annotations.Language
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
+import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
@@ -83,7 +85,9 @@ class IverksettDtoV2Test {
             )
         }
 
-        assertTrue(iverksettV2.vedtak.utbetalinger.first().stønadsdata is StønadsdataTilleggsstønaderDto)
+        val stønadsdataDto = iverksettV2.vedtak.utbetalinger.first().stønadsdata
+        assertTrue(stønadsdataDto is StønadsdataTilleggsstønaderDto)
+        assertNull((stønadsdataDto as StønadsdataTilleggsstønaderDto).brukersNavKontor)
     }
 
     @Test
@@ -99,7 +103,9 @@ class IverksettDtoV2Test {
             )
         }
 
-        assertTrue(iverksettV2.vedtak.utbetalinger.first().stønadsdata is StønadsdataTilleggsstønaderDto)
+        val stønadsdataDto = iverksettV2.vedtak.utbetalinger.first().stønadsdata
+        assertTrue(stønadsdataDto is StønadsdataTilleggsstønaderDto)
+        assertNotNull((stønadsdataDto as StønadsdataTilleggsstønaderDto).brukersNavKontor)
     }
 
     @Test
