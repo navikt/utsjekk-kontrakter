@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
+import java.util.UUID
 
 class IverksettDtoV2Test {
 
@@ -27,14 +28,25 @@ class IverksettDtoV2Test {
 
     @Test
     fun `deserialiserer dto med stønadsdata for dagpenger`() {
-        val iverksettV2 = assertDoesNotThrow { objectMapper.readValue<IverksettV2Dto>(json(StønadsdataDagpengerDto(StønadTypeDagpenger.DAGPENGER_ARBEIDSSØKER_ORDINÆR))) }
+        val iverksettV2 = assertDoesNotThrow { objectMapper.readValue<IverksettV2Dto>(json(StønadsdataDagpengerDto(
+            stønadstype = StønadTypeDagpenger.DAGPENGER_ARBEIDSSØKER_ORDINÆR, meldekortId = UUID.randomUUID().toString()))) }
 
         assertTrue(iverksettV2.vedtak.utbetalinger.first().stønadsdata is StønadsdataDagpengerDto)
     }
 
     @Test
     fun `deserialiserer dto med stønadsdata med ferietillegg for dagpenger`() {
-        val iverksettV2 = assertDoesNotThrow { objectMapper.readValue<IverksettV2Dto>(json(StønadsdataDagpengerDto(stønadstype = StønadTypeDagpenger.DAGPENGER_ARBEIDSSØKER_ORDINÆR, ferietillegg = Ferietillegg.AVDØD))) }
+        val iverksettV2 = assertDoesNotThrow {
+            objectMapper.readValue<IverksettV2Dto>(
+                json(
+                    StønadsdataDagpengerDto(
+                        stønadstype = StønadTypeDagpenger.DAGPENGER_ARBEIDSSØKER_ORDINÆR,
+                        ferietillegg = Ferietillegg.AVDØD,
+                        meldekortId = "UKE_1_2_2024"
+                    )
+                )
+            )
+        }
 
         assertTrue(iverksettV2.vedtak.utbetalinger.first().stønadsdata is StønadsdataDagpengerDto)
     }
@@ -46,7 +58,8 @@ class IverksettDtoV2Test {
                 json(
                     StønadsdataTiltakspengerV2Dto(
                         stønadstype = StønadTypeTiltakspenger.JOBBKLUBB,
-                        brukersNavKontor = "4401"
+                        brukersNavKontor = "4401",
+                        meldekortId = "Uke_40_41_2024",
                     )
                 )
             )
@@ -64,7 +77,8 @@ class IverksettDtoV2Test {
                     StønadsdataTiltakspengerV2Dto(
                         stønadstype = StønadTypeTiltakspenger.JOBBKLUBB,
                         barnetillegg = true,
-                        brukersNavKontor = "4401"
+                        brukersNavKontor = "4401",
+                        meldekortId = "TEST123",
                     )
                 )
             )

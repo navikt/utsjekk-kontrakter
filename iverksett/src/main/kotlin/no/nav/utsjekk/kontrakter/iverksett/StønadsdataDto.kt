@@ -33,16 +33,19 @@ sealed class StønadsdataDto(open val stønadstype: StønadType) {
 /**
  * @property stønadstype Stønadstypene for dagpenger representerer rettighetsgruppene Ordinær arbeidssøker, Permittert, Permittert fra fiskeindustri og EØS.
  * @property ferietillegg Settes når utbetalingen er et ferietillegg.
+ * @property meldekortId Id på meldekortet utbetalingen gjelder.
  */
 data class StønadsdataDagpengerDto(
     override val stønadstype: StønadTypeDagpenger,
-    val ferietillegg: Ferietillegg? = null
+    val ferietillegg: Ferietillegg? = null,
+    val meldekortId: String,
 ) :
     StønadsdataDto(stønadstype) {
     companion object {
         fun deserialiser(json: JsonNode) = try {
             StønadsdataDagpengerDto(
                 stønadstype = StønadTypeDagpenger.valueOf(json["stønadstype"].asText()),
+                meldekortId = json["meldekortId"].asText(),
                 ferietillegg = json["ferietillegg"]?.asText()
                     .takeIf { it != null && it != "null" }
                     ?.let { Ferietillegg.valueOf(it) }
@@ -57,11 +60,13 @@ data class StønadsdataDagpengerDto(
  * @property stønadstype Stønadstypene for tiltakspenger representerer tiltakstypene.
  * @property barnetillegg Settes når utbetalingsperioden gjelder et barnetillegg.
  * @property brukersNavKontor Enhetsnummeret for NAV-kontoret som brukeren tilhører.
+ * @property meldekortId Id på meldekortet utbetalingen gjelder.
  */
 data class StønadsdataTiltakspengerV2Dto(
     override val stønadstype: StønadTypeTiltakspenger,
     val barnetillegg: Boolean = false,
     val brukersNavKontor: String,
+    val meldekortId: String,
 ) : StønadsdataDto(stønadstype) {
     companion object {
         fun deserialiser(json: JsonNode) = try {
@@ -69,6 +74,7 @@ data class StønadsdataTiltakspengerV2Dto(
                 stønadstype = StønadTypeTiltakspenger.valueOf(json["stønadstype"].asText()),
                 barnetillegg = json["barnetillegg"]?.asBoolean() ?: false,
                 brukersNavKontor = json["brukersNavKontor"].asText(),
+                meldekortId = json["meldekortId"].asText(),
             )
         } catch (_: Exception) {
             null
