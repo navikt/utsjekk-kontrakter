@@ -29,7 +29,7 @@ class IverksettDtoV2Test {
     @Test
     fun `deserialiserer dto med stønadsdata for dagpenger`() {
         val iverksettV2 = assertDoesNotThrow { objectMapper.readValue<IverksettV2Dto>(json(StønadsdataDagpengerDto(
-            stønadstype = StønadTypeDagpenger.DAGPENGER_ARBEIDSSØKER_ORDINÆR, meldekortId = UUID.randomUUID().toString()))) }
+            stønadstype = StønadTypeDagpenger.DAGPENGER_ARBEIDSSØKER_ORDINÆR, meldekortId = UUID.randomUUID().toString(), fastsattDagsats = 800U))) }
 
         assertTrue(iverksettV2.vedtak.utbetalinger.first().stønadsdata is StønadsdataDagpengerDto)
     }
@@ -42,7 +42,8 @@ class IverksettDtoV2Test {
                     StønadsdataDagpengerDto(
                         stønadstype = StønadTypeDagpenger.DAGPENGER_ARBEIDSSØKER_ORDINÆR,
                         ferietillegg = Ferietillegg.AVDØD,
-                        meldekortId = "UKE_1_2_2024"
+                        meldekortId = "UKE_1_2_2024",
+                        fastsattDagsats = 800U
                     )
                 )
             )
