@@ -34,13 +34,11 @@ sealed class StønadsdataDto(open val stønadstype: StønadType) {
  * @property stønadstype Stønadstypene for dagpenger representerer rettighetsgruppene Ordinær arbeidssøker, Permittert, Permittert fra fiskeindustri og EØS.
  * @property ferietillegg Settes når utbetalingen er et ferietillegg.
  * @property meldekortId Id på meldekortet utbetalingen gjelder.
- * @property fastsattDagsats Den maksimale dagsatsen bruker kan få etter vedtaket om rett til dagpenger. Brukes for skatteberegning
  */
 data class StønadsdataDagpengerDto(
     override val stønadstype: StønadTypeDagpenger,
     val ferietillegg: Ferietillegg? = null,
     val meldekortId: String,
-    val fastsattDagsats: UInt,
 ) :
     StønadsdataDto(stønadstype) {
     companion object {
@@ -48,7 +46,6 @@ data class StønadsdataDagpengerDto(
             StønadsdataDagpengerDto(
                 stønadstype = StønadTypeDagpenger.valueOf(json["stønadstype"].asText()),
                 meldekortId = json["meldekortId"].asText(),
-                fastsattDagsats = json["fastsattDagsats"].asInt().toUInt(),
                 ferietillegg = json["ferietillegg"]?.asText()
                     .takeIf { it != null && it != "null" }
                     ?.let { Ferietillegg.valueOf(it) }
