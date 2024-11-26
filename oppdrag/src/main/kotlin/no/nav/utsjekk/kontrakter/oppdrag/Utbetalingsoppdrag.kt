@@ -36,6 +36,7 @@ data class Utbetalingsperiode(
     val utbetalesTil: String,
     val behandlingId: String,
     val utbetalingsgrad: Int? = null,
+    val fastsattDagsats: BigDecimal? = null,
 )
 
 data class Opphør(val fom: LocalDate)
