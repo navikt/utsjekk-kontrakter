@@ -61,3 +61,10 @@ enum class StønadTypeTilleggsstønader : StønadType {
 
     override fun tilFagsystem(): Fagsystem = Fagsystem.TILLEGGSSTØNADER
 }
+
+enum class StønadTypeAAP: StønadType {
+    AAP_UNDER_ARBEIDSAVKLARING
+    ;
+
+    override fun tilFagsystem(): Fagsystem = Fagsystem.AAP
+}

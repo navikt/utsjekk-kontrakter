@@ -3,6 +3,7 @@ package no.nav.utsjekk.kontrakter.iverksett
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.databind.JsonNode
 import no.nav.utsjekk.kontrakter.felles.StønadType
+import no.nav.utsjekk.kontrakter.felles.StønadTypeAAP
 import no.nav.utsjekk.kontrakter.felles.StønadTypeDagpenger
 import no.nav.utsjekk.kontrakter.felles.StønadTypeTilleggsstønader
 import no.nav.utsjekk.kontrakter.felles.StønadTypeTiltakspenger
@@ -99,6 +100,20 @@ data class StønadsdataTilleggsstønaderDto(
             StønadsdataTilleggsstønaderDto(
                 stønadstype = StønadTypeTilleggsstønader.valueOf(json["stønadstype"].asText()),
                 brukersNavKontor = json["brukersNavKontor"]?.asText().takeIf { it != null && it != "null" },
+            )
+        } catch (_: Exception) {
+            null
+        }
+    }
+}
+
+data class StønadsdataAAPDto(
+    override val stønadstype: StønadTypeAAP
+) : StønadsdataDto (stønadstype) {
+    companion object {
+        fun deserialiser(json: JsonNode) = try {
+            StønadsdataAAPDto(
+                stønadstype = StønadTypeAAP.valueOf(json["stønadstype"].asText()),
             )
         } catch (_: Exception) {
             null

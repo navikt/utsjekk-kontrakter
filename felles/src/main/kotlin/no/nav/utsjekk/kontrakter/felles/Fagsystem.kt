@@ -3,6 +3,7 @@ package no.nav.utsjekk.kontrakter.felles
 import java.lang.IllegalArgumentException
 
 enum class Fagsystem(val kode: String) {
+    AAP("AAP"),
     DAGPENGER("DP"),
     TILTAKSPENGER("TILTPENG"),
     TILLEGGSSTØNADER("TILLST"),
