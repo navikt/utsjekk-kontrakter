@@ -109,12 +109,14 @@ data class StønadsdataTilleggsstønaderDto(
 }
 
 data class StønadsdataAAPDto(
-    override val stønadstype: StønadTypeAAP
+    override val stønadstype: StønadTypeAAP,
+    val fastsattDagsats: UInt,
 ) : StønadsdataDto (stønadstype) {
     companion object {
         fun deserialiser(json: JsonNode) = try {
             StønadsdataAAPDto(
                 stønadstype = StønadTypeAAP.valueOf(json["stønadstype"].asText()),
+                fastsattDagsats = json["fastsattDagsats"].asInt().toUInt(),
             )
         } catch (_: Exception) {
             null
