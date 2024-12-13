@@ -22,6 +22,7 @@ sealed class StønadsdataDto(open val stønadstype: StønadType) {
         @JvmStatic
         fun deserialize(json: JsonNode) =
             listOf(
+                StønadsdataAAPDto::deserialiser,
                 StønadsdataDagpengerDto::deserialiser,
                 StønadsdataTiltakspengerV2Dto::deserialiser,
                 StønadsdataTilleggsstønaderDto::deserialiser
