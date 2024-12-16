@@ -110,13 +110,13 @@ data class StønadsdataTilleggsstønaderDto(
 
 data class StønadsdataAAPDto(
     override val stønadstype: StønadTypeAAP,
-    val fastsattDagsats: UInt,
+    val fastsattDagsats: UInt? = null,
 ) : StønadsdataDto (stønadstype) {
     companion object {
         fun deserialiser(json: JsonNode) = try {
             StønadsdataAAPDto(
                 stønadstype = StønadTypeAAP.valueOf(json["stønadstype"].asText()),
-                fastsattDagsats = json["fastsattDagsats"].asInt().toUInt(),
+                fastsattDagsats = json["fastsattDagsats"]?.asText().takeIf { it != null && it != "null" }?.toUInt(),
             )
         } catch (_: Exception) {
             null

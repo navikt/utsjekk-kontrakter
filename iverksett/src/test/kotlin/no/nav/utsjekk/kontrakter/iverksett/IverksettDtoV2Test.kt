@@ -3,6 +3,7 @@ package no.nav.utsjekk.kontrakter.iverksett
 import com.fasterxml.jackson.databind.exc.ValueInstantiationException
 import com.fasterxml.jackson.module.kotlin.readValue
 import no.nav.utsjekk.kontrakter.felles.Personident
+import no.nav.utsjekk.kontrakter.felles.StønadTypeAAP
 import no.nav.utsjekk.kontrakter.felles.StønadTypeDagpenger
 import no.nav.utsjekk.kontrakter.felles.StønadTypeTilleggsstønader
 import no.nav.utsjekk.kontrakter.felles.StønadTypeTiltakspenger
@@ -121,6 +122,22 @@ class IverksettDtoV2Test {
         val stønadsdataDto = iverksettV2.vedtak.utbetalinger.first().stønadsdata
         assertTrue(stønadsdataDto is StønadsdataTilleggsstønaderDto)
         assertNotNull((stønadsdataDto as StønadsdataTilleggsstønaderDto).brukersNavKontor)
+    }
+
+    @Test
+    fun `deserialiserer dto med stønadsdata for AAP`() {
+        val iverksettV2 = assertDoesNotThrow { objectMapper.readValue<IverksettV2Dto>(json(StønadsdataAAPDto(
+            stønadstype = StønadTypeAAP.AAP_UNDER_ARBEIDSAVKLARING, fastsattDagsats = 800U))) }
+
+        assertTrue(iverksettV2.vedtak.utbetalinger.first().stønadsdata is StønadsdataAAPDto)
+    }
+
+    @Test
+    fun `deserialiserer dto med stønadsdata for AAP uten fastsatt dagsats`() {
+        val iverksettV2 = assertDoesNotThrow { objectMapper.readValue<IverksettV2Dto>(json(StønadsdataAAPDto(
+            stønadstype = StønadTypeAAP.AAP_UNDER_ARBEIDSAVKLARING, fastsattDagsats = null))) }
+
+        assertTrue(iverksettV2.vedtak.utbetalinger.first().stønadsdata is StønadsdataAAPDto)
     }
 
     @Test
